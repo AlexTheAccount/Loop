@@ -1,10 +1,16 @@
 extends CharacterBody3D
 
-var pelletLoad = load("res://PackedScenes/Pellet.tscn")
-
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var pelletLoad = load("res://PackedScenes/Pellet.tscn")
+
+var camera
+var playerShape
+
+func _ready():
+	playerShape = get_node("CollisionShape3D")
+	camera = get_node("Camera3D")
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -29,8 +35,32 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _input(event):
+	# for shooting pellets
 	if event.is_action_pressed("ui_select"):
-		var pelletInsta = pelletLoad.instantiate() 
-		pelletInsta.position = position
-		pelletInsta.rotation = rotation
-		get_parent().add_child(pelletInsta)
+		SpawnPellet()
+	
+	# for player mouse rotation
+	if event is InputEventMouseMotion:
+		AlignPlayerWithMouse()
+
+func SpawnPellet():
+	var pelletInsta = pelletLoad.instantiate() 
+	pelletInsta.position = playerShape.position
+	pelletInsta.rotation = playerShape.rotation
+	get_parent().add_child(pelletInsta)
+
+func AlignPlayerWithMouse():
+	var space_state = get_world_3d().direct_space_state
+	var mousePos = get_viewport().get_mouse_position()
+	var rayStart = camera.project_ray_origin(mousePos)
+	var rayEnd = rayStart + camera.project_ray_normal(mousePos) * 1000
+	var query = PhysicsRayQueryParameters3D.create(rayStart, rayEnd)
+	query.collide_with_areas = true
+	query.set_collision_mask(128)
+	
+	var intersection = space_state.intersect_ray(query)
+	
+	if not intersection.is_empty():
+		playerShape.look_at(intersection.position)
+		playerShape.rotation.x = 0
+		playerShape.rotation.z = 0
