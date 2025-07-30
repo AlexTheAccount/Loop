@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+var pelletLoad = load("res://PackedScenes/Pellet.tscn")
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -26,3 +27,10 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func _input(event):
+	if event.is_action_pressed("ui_select"):
+		var pelletInsta = pelletLoad.instantiate() 
+		pelletInsta.position = position
+		pelletInsta.rotation = rotation
+		get_parent().add_child(pelletInsta)
