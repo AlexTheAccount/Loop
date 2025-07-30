@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 
 func _input(event):
 	# for shooting pellets
-	if event.is_action_pressed("ui_select"):
+	if event.is_action_pressed("Fire"):
 		SpawnPellet()
 	
 	# for player mouse rotation
@@ -45,9 +45,9 @@ func _input(event):
 
 func SpawnPellet():
 	var pelletInsta = pelletLoad.instantiate() 
-	pelletInsta.position = playerShape.position
-	pelletInsta.rotation = playerShape.rotation
-	get_parent().add_child(pelletInsta)
+	pelletInsta.position = playerShape.global_position
+	pelletInsta.rotation = playerShape.global_rotation
+	get_parent().get_parent().add_child(pelletInsta)
 
 func AlignPlayerWithMouse():
 	var space_state = get_world_3d().direct_space_state
