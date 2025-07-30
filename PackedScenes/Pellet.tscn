@@ -8,7 +8,7 @@
 
 [node name="Pellet" type="Node3D"]
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["Pellets"]]
 script = ExtResource("1_ech5i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
@@ -17,3 +17,5 @@ shape = SubResource("BoxShape3D_vbjkq")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
 mesh = SubResource("BoxMesh_d5ute")
 skeleton = NodePath("../..")
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

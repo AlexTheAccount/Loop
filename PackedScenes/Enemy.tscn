@@ -8,7 +8,7 @@
 
 [node name="Enemy" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Enemies"]]
 script = ExtResource("1_byphh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
