@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5ig66n7nijgc"]
+
+[ext_resource type="Script" uid="uid://c6iiidhonc4s4" path="res://Scripts/CreditsControl.gd" id="1_66id8"]
+
+[node name="CreditsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_66id8")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.571
+anchor_right = 1.0
+anchor_bottom = 0.75
+offset_left = 0.207947
+offset_bottom = -3.05176e-05
+text = "Made in Godot
+
+Music made in LMMS
+
+3D models made in Blender
+
+SFX from Pixabay and edited in WavePad:
+
+Thanks For Playing!
+"
+editable = false
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.673
+anchor_top = 0.889
+anchor_right = 1.0
+anchor_bottom = 0.998
+offset_left = -0.296021
+offset_top = -0.0720215
+offset_bottom = 0.295959
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back
+"
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

@@ -1,6 +1,7 @@
 extends Control
 
 var levelLoad = load("uid://d1kdwsejf8x15")
+var creditsLoad = load("uid://c5ig66n7nijgc")
 
 var startNode
 var continueNode
@@ -36,7 +37,7 @@ func ToggleAll():
 	quitNode.visible = not quitNode.visible
 
 func _on_start_button_up() -> void:
-	GlobalData.loopNum == 1
+	GlobalData.loopNum = 1
 	ToggleAll()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
@@ -51,7 +52,7 @@ func _on_continue_button_up() -> void:
 
 
 func _on_restart_button_up() -> void:
-	GlobalData.loopNum == 1
+	GlobalData.loopNum = 1
 	ToggleAll()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
@@ -63,6 +64,10 @@ func _on_settings_button_up() -> void:
 
 
 func _on_credits_button_up() -> void:
+	ToggleAll()
+	var addedCredits = creditsLoad.instantiate()
+	add_child(addedCredits)
+	addedCredits.mainMenu = self
 	pass # Replace with function body.
 
 
