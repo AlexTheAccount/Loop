@@ -3,12 +3,14 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
-var pelletLoad = load("res://PackedScenes/Pellet.tscn")
+var pelletLoad = load("uid://6p3xnxkixoqb")
 
+var mainMenuNode
 var camera
 var playerShape
 
 func _ready():
+	mainMenuNode = get_tree().root.get_node("Main Menu")
 	playerShape = get_node("CollisionShape3D")
 	camera = get_node("Camera3D")
 
@@ -64,3 +66,10 @@ func AlignPlayerWithMouse():
 		playerShape.look_at(intersection.position)
 		playerShape.rotation.x = 0
 		playerShape.rotation.z = 0
+
+
+func _on_player_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Enemies"):
+		mainMenuNode.ToggleAll()
+		get_parent().get_parent().queue_free()
+	pass # Replace with function body.
