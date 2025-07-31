@@ -12,6 +12,7 @@ var quitNode
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GlobalData.LoadData()
 	startNode = get_node("Start")
 	continueNode = get_node("Continue")
 	restartNode = get_node("Restart")
@@ -35,9 +36,13 @@ func ToggleAll():
 	settingsNode.visible = not settingsNode.visible
 	creditsNode.visible = not creditsNode.visible
 	quitNode.visible = not quitNode.visible
+	
+	if GlobalData.loopNum > 0:
+		startNode.disabled = true
 
 func _on_start_button_up() -> void:
 	GlobalData.loopNum = 1
+	GlobalData.SaveData()
 	ToggleAll()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
@@ -45,6 +50,7 @@ func _on_start_button_up() -> void:
 
 func _on_continue_button_up() -> void:
 	GlobalData.loopNum += 1
+	GlobalData.SaveData()
 	ToggleAll()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
@@ -53,6 +59,7 @@ func _on_continue_button_up() -> void:
 
 func _on_restart_button_up() -> void:
 	GlobalData.loopNum = 1
+	GlobalData.SaveData()
 	ToggleAll()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
