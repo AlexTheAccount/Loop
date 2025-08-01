@@ -75,3 +75,15 @@ func _on_player_area_3d_body_entered(body: Node3D) -> void:
 		GlobalData.SaveData()
 		get_parent().get_parent().queue_free()
 	pass # Replace with function body.
+
+
+func _on_player_area_3d_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Books"):
+		if area.is_in_group("Double Jump"):
+			pass
+		elif area.is_in_group("Dash"):
+			pass
+		elif area.is_in_group("Freeze Shot"):
+			pass
+		area.get_parent().queue_free()
+	pass # Replace with function body.

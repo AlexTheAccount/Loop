@@ -46,4 +46,5 @@ shape = SubResource("BoxShape3D_0rwas")
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 sky_mode = 1
 
+[connection signal="area_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_area_entered"]
 [connection signal="body_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_body_entered"]
