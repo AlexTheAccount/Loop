@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ds2tdse6btxsq"]
+
+[ext_resource type="PackedScene" uid="uid://cjewt7cwlpsjd" path="res://PackedScenes/MenuPlayer.tscn" id="1_lb7x6"]
+
+[node name="MMB" type="Node3D"]
+
+[node name="MenuPlayer" parent="." instance=ExtResource("1_lb7x6")]
+transform = Transform3D(-0.891062, 0, -0.453882, 0, 1, 0, 0.453882, 0, -0.891062, -3.16054, 0, -8.00139)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, 0.353553, -0.612372, 2.18557e-08, 0.866025, 0.5, 0.707107, -0.353553, 0.612372, 0, 0, 0)

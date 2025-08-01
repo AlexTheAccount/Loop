@@ -71,5 +71,7 @@ func AlignPlayerWithMouse():
 func _on_player_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemies"):
 		mainMenuNode.ToggleAll()
+		GlobalData.isPlayerDead = true
+		GlobalData.SaveData()
 		get_parent().get_parent().queue_free()
 	pass # Replace with function body.

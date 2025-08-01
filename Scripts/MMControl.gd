@@ -1,5 +1,6 @@
 extends Control
 
+var MMDLoad = load("uid://ds2tdse6btxsq")
 var levelLoad = load("uid://d1kdwsejf8x15")
 var creditsLoad = load("uid://c5ig66n7nijgc")
 
@@ -9,6 +10,7 @@ var restartNode
 var settingsNode
 var creditsNode
 var quitNode
+var addedMMD
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -22,6 +24,10 @@ func _ready() -> void:
 	
 	if GlobalData.loopNum > 0:
 		startNode.disabled = true
+	
+	addedMMD = MMDLoad.instantiate()
+	add_child(addedMMD)
+	
 	pass # Replace with function body.
 
 
@@ -39,19 +45,26 @@ func ToggleAll():
 	
 	if GlobalData.loopNum > 0:
 		startNode.disabled = true
+	
+	if addedMMD == null:
+		addedMMD = MMDLoad.instantiate()
+		add_child(addedMMD)
 
 func _on_start_button_up() -> void:
 	GlobalData.loopNum = 1
 	GlobalData.SaveData()
 	ToggleAll()
+	addedMMD.queue_free()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
 
 func _on_continue_button_up() -> void:
 	GlobalData.loopNum += 1
+	GlobalData.isPlayerDead = false
 	GlobalData.SaveData()
 	ToggleAll()
+	addedMMD.queue_free()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
@@ -59,8 +72,10 @@ func _on_continue_button_up() -> void:
 
 func _on_restart_button_up() -> void:
 	GlobalData.loopNum = 1
+	GlobalData.isPlayerDead = false
 	GlobalData.SaveData()
 	ToggleAll()
+	addedMMD.queue_free()
 	var addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
