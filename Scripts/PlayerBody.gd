@@ -9,6 +9,8 @@ var mainMenuNode
 var camera
 var playerShape
 
+var jumpCount = 0
+
 func _ready():
 	mainMenuNode = get_tree().root.get_node("Main Menu")
 	playerShape = get_node("CollisionShape3D")
@@ -18,10 +20,14 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() || Input.is_action_just_pressed("ui_accept") && jumpCount < GlobalData.jumpLimit:
 		velocity.y = JUMP_VELOCITY
+		jumpCount += 1
+	
+	if is_on_floor():
+		jumpCount = 0
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -79,7 +85,7 @@ func _on_player_area_3d_body_entered(body: Node3D) -> void:
 
 func _on_player_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Books"):
-		if area.is_in_group("Double Jump"):
+		if area.is_in_group("Jump Boost"):
 			pass
 		elif area.is_in_group("Dash"):
 			pass
