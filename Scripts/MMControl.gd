@@ -71,8 +71,8 @@ func _on_continue_button_up() -> void:
 
 
 func _on_restart_button_up() -> void:
+	GlobalData.ResetData()
 	GlobalData.loopNum = 1
-	GlobalData.isPlayerDead = false
 	GlobalData.SaveData()
 	ToggleAll()
 	addedMMD.queue_free()

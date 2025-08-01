@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 5.0
+var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
 var pelletLoad = load("uid://6p3xnxkixoqb")
@@ -10,6 +10,8 @@ var camera
 var playerShape
 
 var jumpCount = 0
+var dashLeft = GlobalData.dashTime
+var shiftPressed = false
 
 func _ready():
 	mainMenuNode = get_tree().root.get_node("Main Menu")
@@ -25,9 +27,19 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() || Input.is_action_just_pressed("ui_accept") && jumpCount < GlobalData.jumpLimit:
 		velocity.y = JUMP_VELOCITY
 		jumpCount += 1
-	
 	if is_on_floor():
 		jumpCount = 0
+	
+	# Handle Dash.
+	if Input.is_action_just_pressed("Dash") && dashLeft > 0 || not Input.is_action_just_released("Dash") && shiftPressed == true && dashLeft > 0:
+		SPEED = 25
+		dashLeft -= delta
+		shiftPressed = true
+	
+	if Input.is_action_just_released("Dash") || dashLeft < 0:
+		SPEED = 5
+		dashLeft = GlobalData.dashTime
+		shiftPressed = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -88,8 +100,10 @@ func _on_player_area_3d_area_entered(area: Area3D) -> void:
 		if area.is_in_group("Jump Boost"):
 			pass
 		elif area.is_in_group("Dash"):
-			pass
+			GlobalData.dashTime += 0.1
+			dashLeft = GlobalData.dashTime
 		elif area.is_in_group("Freeze Shot"):
 			pass
+		GlobalData.SaveData()
 		area.get_parent().queue_free()
 	pass # Replace with function body.
