@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://iuy3hb81rvv7"]
+
+[ext_resource type="Script" uid="uid://csxwd150xpys5" path="res://Scripts/DeathFloor.gd" id="1_8eaq3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6f1e6"]
+size = Vector3(5, 1, 5)
+
+[node name="DeathFloor" type="Node3D"]
+script = ExtResource("1_8eaq3")
+
+[node name="Area3D" type="Area3D" parent="." groups=["Enemies"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_6f1e6")

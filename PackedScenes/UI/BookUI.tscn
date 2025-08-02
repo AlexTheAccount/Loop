@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cds4kxtfn56wb"]
 
-[ext_resource type="Script" uid="uid://c0lcu5txdj6ry" path="res://Scripts/BookUI.gd" id="1_gd456"]
+[ext_resource type="Script" uid="uid://c0lcu5txdj6ry" path="res://Scripts/UI/BookUI.gd" id="1_gd456"]
 
 [node name="BookUI" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://ddy8i5cbnnvgs"]
 
-[ext_resource type="Script" uid="uid://ddgmhc5n7c50v" path="res://Scripts/EnemyBody.gd" id="1_byphh"]
+[ext_resource type="Script" uid="uid://ddgmhc5n7c50v" path="res://Scripts/Body/EnemyBody.gd" id="1_byphh"]
 [ext_resource type="PackedScene" uid="uid://bx63g8kuoixba" path="res://Blend/Enemy.blend" id="2_f554b"]
 [ext_resource type="PackedScene" uid="uid://bybhbrclglnlf" path="res://Blend/Freeze.blend" id="3_j0bwf"]
 

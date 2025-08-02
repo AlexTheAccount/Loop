@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjewt7cwlpsjd"]
 
 [ext_resource type="PackedScene" uid="uid://dn11a5vf40iy4" path="res://Blend/Player.blend" id="1_axsxn"]
-[ext_resource type="Script" uid="uid://dt1kitvsmkcy5" path="res://Scripts/MenuPlayer.gd" id="2_sepwj"]
+[ext_resource type="Script" uid="uid://dt1kitvsmkcy5" path="res://Scripts/UI/MenuPlayer.gd" id="2_sepwj"]
 
 [node name="MenuPlayer" instance=ExtResource("1_axsxn")]
 script = ExtResource("2_sepwj")
