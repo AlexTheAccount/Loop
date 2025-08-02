@@ -24,5 +24,9 @@ func _on_body_entered(body: Node3D) -> void:
 		body.health -= 0.1
 		if body.healthBar.mesh.size.x <= 0:
 			body.get_parent().queue_free()
+		
+		if GlobalData.freezeTime > 0:
+			body.Freeze()
+		
 		get_parent().queue_free()
 	pass # Replace with function body.
