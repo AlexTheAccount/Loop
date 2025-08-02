@@ -7,6 +7,8 @@ var pauseLoad = load("uid://cgwpp6r4aqbmm")
 var pelletLoad = load("uid://6p3xnxkixoqb")
 var bookUILoad = load("uid://cds4kxtfn56wb")
 
+var bookUIGD = load("uid://c0lcu5txdj6ry")
+
 var mainMenuNode
 var camera
 var playerShape
@@ -112,6 +114,7 @@ func _on_player_area_3d_area_entered(area: Area3D) -> void:
 			var bookUIInsta = bookUILoad.instantiate() 
 			get_parent().get_parent().add_child(bookUIInsta)
 			bookUIInsta.bookAreaNode = area
+			bookUIInsta.CheckGroup()
 		elif area.is_in_group("Dash"):
 			GlobalData.dashTime += 0.1
 			dashLeft = GlobalData.dashTime
@@ -119,12 +122,14 @@ func _on_player_area_3d_area_entered(area: Area3D) -> void:
 			var bookUIInsta = bookUILoad.instantiate() 
 			get_parent().get_parent().add_child(bookUIInsta)
 			bookUIInsta.bookAreaNode = area
+			bookUIInsta.CheckGroup()
 		elif area.is_in_group("Freeze Shot"):
 			GlobalData.freezeTime += 0.1
 			
 			var bookUIInsta = bookUILoad.instantiate() 
 			get_parent().get_parent().add_child(bookUIInsta)
 			bookUIInsta.bookAreaNode = area
+			bookUIInsta.CheckGroup()
 		GlobalData.SaveData()
 		area.get_parent().queue_free()
 	pass # Replace with function body.

@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="AbilityDetails" type="TextEdit" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5

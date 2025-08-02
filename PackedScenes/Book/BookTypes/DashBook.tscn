@@ -2,6 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://csl8pxw2kp0i4" path="res://PackedScenes/Book/Book.tscn" id="1_633aj"]
 
-[node name="Book" instance=ExtResource("1_633aj")]
+[node name="DashBook" instance=ExtResource("1_633aj")]
 
 [node name="Area3D" parent="." index="1" groups=["Dash"]]
