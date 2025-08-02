@@ -13,6 +13,9 @@ var mainMenuNode
 var playerUI
 var camera
 var playerShape
+var playerBlend
+var playerDashingBlend
+var playerArea
 
 var jumpCount = 0
 var dashLeft = GlobalData.dashTime
@@ -24,6 +27,10 @@ func _ready():
 	playerShape = get_node("CollisionShape3D")
 	camera = get_node("Camera3D")
 	playerUI.DashBar.visible = false
+	
+	playerBlend = get_node("CollisionShape3D/PlayerBlend")
+	playerDashingBlend = get_node("CollisionShape3D/PlayerDashingBlend")
+	playerArea = get_node("PlayerArea3D")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -46,14 +53,20 @@ func _physics_process(delta: float) -> void:
 	
 	# Handle Dash.
 	if Input.is_action_just_pressed("Dash") && dashLeft > 0 || not Input.is_action_just_released("Dash") && shiftPressed == true && dashLeft > 0:
+		playerArea.set_collision_mask_value(2, false) # 2 colides with enemies
 		SPEED = 25
 		dashLeft -= delta
 		playerUI.DashBar.visible = true
 		playerUI.DashRect.scale.x = dashLeft
 		shiftPressed = true
+		playerDashingBlend.visible = true
+		playerBlend.visible = false
 	if Input.is_action_just_released("Dash") || dashLeft < 0:
+		playerArea.set_collision_mask_value(2, true) # 2 colides with enemies
 		SPEED = 5
 		shiftPressed = false
+		playerDashingBlend.visible = false
+		playerBlend.visible = true
 	if dashLeft < GlobalData.dashTime && shiftPressed == false:
 		dashLeft += 0.01
 		playerUI.DashRect.scale.x = dashLeft

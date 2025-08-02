@@ -37,7 +37,7 @@ func CheckGroup():
 		iconsNode.add_child(addedJumpBoostsIcon)
 	elif bookAreaNode.is_in_group("Dash"):
 		abilityNameNode.text = "Dash Boosts"
-		abilityDetailsNode.text = "Hold Shift To Dash\nYou can now dash for " + str(GlobalData.dashTime) + " seconds"
+		abilityDetailsNode.text = "Hold Shift To Dash\nLets You Dash Through Enemies\nYou can now dash for " + str(GlobalData.dashTime) + " seconds"
 		var addedDashBoostsIcon = DashBoostsIconLoad.instantiate()
 		iconsNode.add_child(addedDashBoostsIcon)
 	elif bookAreaNode.is_in_group("Freeze Shot"):
