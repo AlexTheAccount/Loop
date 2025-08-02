@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemies"):
+		body.healthBar.visible = true
 		body.healthBar.mesh.size.x -= 0.1
 		body.health -= 0.1
 		if body.healthBar.mesh.size.x <= 0:
