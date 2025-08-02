@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://csf87iojvo4xp"]
+
+[ext_resource type="PackedScene" uid="uid://csl8pxw2kp0i4" path="res://PackedScenes/Book/Book.tscn" id="1_tuv54"]
+
+[node name="Book" instance=ExtResource("1_tuv54")]
+
+[node name="Area3D" parent="." index="1" groups=["Freeze Shot"]]
