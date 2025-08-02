@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://x64iv16s0wlh"]
+
+[ext_resource type="Texture2D" uid="uid://2b31ekq10rc1" path="res://PNG/DashBoosts.png" id="1_skndr"]
+
+[node name="DashBoostsIcon" type="TextureRect"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_skndr")
+stretch_mode = 5

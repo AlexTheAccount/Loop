@@ -3,6 +3,7 @@ extends CharacterBody3D
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var pauseLoad = load("uid://cgwpp6r4aqbmm")
 var pelletLoad = load("uid://6p3xnxkixoqb")
 
 var mainMenuNode
@@ -17,6 +18,13 @@ func _ready():
 	mainMenuNode = get_tree().root.get_node("Main Menu")
 	playerShape = get_node("CollisionShape3D")
 	camera = get_node("Camera3D")
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		var pauseInsta = pauseLoad.instantiate() 
+		get_parent().get_parent().add_child(pauseInsta)
+	pass
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

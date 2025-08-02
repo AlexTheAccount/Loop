@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://db3exn288okc4"]
+
+[ext_resource type="Texture2D" uid="uid://bxgo5meebu4q8" path="res://PNG/FreezeShot.png" id="1_t4tmd"]
+
+[node name="FreezeShotIcon" type="TextureRect"]
+texture_filter = 1
+texture_repeat = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_t4tmd")
+stretch_mode = 5
