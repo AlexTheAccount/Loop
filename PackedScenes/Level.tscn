@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://don77aibrilpa" path="res://Materials/Grey.tres" id="1_3sot4"]
 [ext_resource type="PackedScene" uid="uid://ntp657mu5don" path="res://PackedScenes/Player/Player.tscn" id="2_weqj7"]
 [ext_resource type="PackedScene" uid="uid://ddy8i5cbnnvgs" path="res://PackedScenes/Enemy.tscn" id="3_o8tum"]
-[ext_resource type="PackedScene" uid="uid://csf87iojvo4xp" path="res://PackedScenes/Book/BookTypes/FreezeBook.tscn" id="4_s1s6k"]
+[ext_resource type="PackedScene" uid="uid://tft0w0wxxl1l" path="res://PackedScenes/Book/BookTypes/DashBook.tscn" id="4_s1s6k"]
 [ext_resource type="PackedScene" uid="uid://iuy3hb81rvv7" path="res://PackedScenes/DeathFloor.tscn" id="5_cslcc"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fa1m1"]
@@ -13,13 +13,13 @@ material = ExtResource("1_3sot4")
 
 [node name="Level" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="."]
 transform = Transform3D(21.0465, 0, 0, 0, 2.26957, 0, 0, 0, 18.9296, 0, -1.32395, 0)
 mesh = SubResource("BoxMesh_fa1m1")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
 shape = SubResource("BoxShape3D_weqj7")
 
 [node name="Player" parent="." instance=ExtResource("2_weqj7")]
@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94901, 1.05154, 3.19828)
 [node name="Enemy" parent="." instance=ExtResource("3_o8tum")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.65441, 0.310834, 0.514543)
 
-[node name="FreezeBook" parent="." instance=ExtResource("4_s1s6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94173, -0.189165, 3.7546)
-
 [node name="DeathFloor" parent="." instance=ExtResource("5_cslcc")]
+
+[node name="DashBook" parent="." instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0795, -0.189165, -3.31839)

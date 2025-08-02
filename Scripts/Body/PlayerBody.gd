@@ -10,6 +10,7 @@ var bookUILoad = load("uid://cds4kxtfn56wb")
 var bookUIGD = load("uid://c0lcu5txdj6ry")
 
 var mainMenuNode
+var playerUI
 var camera
 var playerShape
 
@@ -19,8 +20,10 @@ var shiftPressed = false
 
 func _ready():
 	mainMenuNode = get_tree().root.get_node("Main Menu")
+	playerUI = get_node("PlayerUI")
 	playerShape = get_node("CollisionShape3D")
 	camera = get_node("Camera3D")
+	playerUI.DashBar.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -45,12 +48,17 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("Dash") && dashLeft > 0 || not Input.is_action_just_released("Dash") && shiftPressed == true && dashLeft > 0:
 		SPEED = 25
 		dashLeft -= delta
+		playerUI.DashBar.visible = true
+		playerUI.DashRect.scale.x = dashLeft
 		shiftPressed = true
-	
 	if Input.is_action_just_released("Dash") || dashLeft < 0:
 		SPEED = 5
-		dashLeft = GlobalData.dashTime
 		shiftPressed = false
+	if dashLeft < GlobalData.dashTime && shiftPressed == false:
+		dashLeft += 0.01
+		playerUI.DashRect.scale.x = dashLeft
+	elif dashLeft >= GlobalData.dashTime && shiftPressed == false:
+		playerUI.DashBar.visible = false
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
