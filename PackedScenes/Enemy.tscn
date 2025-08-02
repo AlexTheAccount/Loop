@@ -1,10 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddy8i5cbnnvgs"]
 
 [ext_resource type="Script" uid="uid://ddgmhc5n7c50v" path="res://Scripts/EnemyBody.gd" id="1_byphh"]
+[ext_resource type="PackedScene" uid="uid://bx63g8kuoixba" path="res://Blend/Enemy.blend" id="2_f554b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f554b"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_j0bwf"]
 
 [node name="Enemy" type="Node3D"]
 
@@ -16,6 +15,4 @@ script = ExtResource("1_byphh")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 shape = SubResource("BoxShape3D_f554b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/CollisionShape3D"]
-mesh = SubResource("BoxMesh_j0bwf")
-skeleton = NodePath("../..")
+[node name="Enemy" parent="CharacterBody3D" instance=ExtResource("2_f554b")]
