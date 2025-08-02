@@ -5,6 +5,7 @@ const JUMP_VELOCITY = 4.5
 
 var pauseLoad = load("uid://cgwpp6r4aqbmm")
 var pelletLoad = load("uid://6p3xnxkixoqb")
+var bookUILoad = load("uid://cds4kxtfn56wb")
 
 var mainMenuNode
 var camera
@@ -106,12 +107,24 @@ func _on_player_area_3d_body_entered(body: Node3D) -> void:
 func _on_player_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Books"):
 		if area.is_in_group("Jump Boost"):
-			pass
+			GlobalData.jumpLimit += 1
+			
+			var bookUIInsta = bookUILoad.instantiate() 
+			get_parent().get_parent().add_child(bookUIInsta)
+			bookUIInsta.bookAreaNode = area
 		elif area.is_in_group("Dash"):
 			GlobalData.dashTime += 0.1
 			dashLeft = GlobalData.dashTime
+			
+			var bookUIInsta = bookUILoad.instantiate() 
+			get_parent().get_parent().add_child(bookUIInsta)
+			bookUIInsta.bookAreaNode = area
 		elif area.is_in_group("Freeze Shot"):
-			pass
+			GlobalData.freezeTime += 0.1
+			
+			var bookUIInsta = bookUILoad.instantiate() 
+			get_parent().get_parent().add_child(bookUIInsta)
+			bookUIInsta.bookAreaNode = area
 		GlobalData.SaveData()
 		area.get_parent().queue_free()
 	pass # Replace with function body.
