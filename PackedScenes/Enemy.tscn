@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://ddy8i5cbnnvgs"]
+[gd_scene load_steps=6 format=3 uid="uid://ddy8i5cbnnvgs"]
 
 [ext_resource type="Script" uid="uid://ddgmhc5n7c50v" path="res://Scripts/EnemyBody.gd" id="1_byphh"]
 [ext_resource type="PackedScene" uid="uid://bx63g8kuoixba" path="res://Blend/Enemy.blend" id="2_f554b"]
+[ext_resource type="PackedScene" uid="uid://bybhbrclglnlf" path="res://Blend/Freeze.blend" id="3_j0bwf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f554b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_j0bwf"]
+size = Vector2(1, 0.1)
 
 [node name="Enemy" type="Node3D"]
 
@@ -16,3 +20,11 @@ script = ExtResource("1_byphh")
 shape = SubResource("BoxShape3D_f554b")
 
 [node name="Enemy" parent="CharacterBody3D" instance=ExtResource("2_f554b")]
+
+[node name="Freeze" parent="CharacterBody3D" instance=ExtResource("3_j0bwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.587762, 0)
+visible = false
+
+[node name="HealthBar" type="MeshInstance3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 1.08026, 0)
+mesh = SubResource("QuadMesh_j0bwf")
