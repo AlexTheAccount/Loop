@@ -1,15 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://6p3xnxkixoqb"]
 
 [ext_resource type="Script" uid="uid://c0kdgeiphn4qx" path="res://Scripts/PelletArea.gd" id="1_na5om"]
+[ext_resource type="PackedScene" uid="uid://318r3elxwhu2" path="res://Blend/Pellet.blend" id="2_bgl2n"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbjkq"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_d5ute"]
-
 [node name="Pellet" type="Node3D"]
-transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 
 [node name="Area3D" type="Area3D" parent="." groups=["Pellets"]]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_na5om")
@@ -17,8 +16,7 @@ script = ExtResource("1_na5om")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_vbjkq")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D/CollisionShape3D"]
-mesh = SubResource("BoxMesh_d5ute")
-skeleton = NodePath("../..")
+[node name="Pellet" parent="Area3D/CollisionShape3D" instance=ExtResource("2_bgl2n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
