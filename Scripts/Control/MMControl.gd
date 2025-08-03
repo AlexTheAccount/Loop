@@ -10,8 +10,10 @@ var continueNode
 var restartNode
 var settingsNode
 var creditsNode
+var endlessNode
 var quitNode
 var addedMMD
+var addedLevel
 var clickPlayer
 var musicMainPlayer
 var rng = RandomNumberGenerator.new()
@@ -27,6 +29,7 @@ func _ready() -> void:
 	quitNode = get_node("Quit")
 	clickPlayer = get_node("ClickPlayer")
 	musicMainPlayer = get_node("MusicMainPlayer")
+	endlessNode = get_node("Endless")
 	clickPlayer.volume_db = GlobalData.sfxVolume
 	musicMainPlayer.volume_db = GlobalData.musicVolume
 	
@@ -41,8 +44,11 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if addedMMD == null && musicMainPlayer.playing == false:
+	if addedLevel == null && musicMainPlayer.playing == false:
 		musicMainPlayer.play()
+		
+	if addedLevel != null:
+		musicMainPlayer.stop()
 	pass
 
 func ToggleAll():
@@ -54,6 +60,7 @@ func ToggleAll():
 	settingsNode.visible = not settingsNode.visible
 	creditsNode.visible = not creditsNode.visible
 	quitNode.visible = not quitNode.visible
+	endlessNode.visible = not endlessNode.visible
 	
 	if GlobalData.loopNum > 0:
 		startNode.disabled = true
@@ -85,7 +92,7 @@ func _on_continue_button_up() -> void:
 	GlobalData.SaveData()
 	ToggleAll()
 	addedMMD.queue_free()
-	var addedLevel = levelLoad.instantiate()
+	addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
 

@@ -15,7 +15,7 @@ var player
 
 func _ready():
 	player = get_parent().get_parent().get_parent().get_node("Player").get_child(0)
-	
+	player.bossTime = true;
 	healthBar = get_parent().get_node("BossUI")
 	healthRect = healthBar.get_child(0).get_child(0)
 	

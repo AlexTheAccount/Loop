@@ -45,7 +45,7 @@ func _on_body_entered(body: Node3D) -> void:
 		get_parent().queue_free()
 	elif body.is_in_group("Bosses"):
 		hitPlayer.pitch_scale = rng.randf_range(0.2, 0.4)
-		hitPlayer.Play()
+		hitPlayer.play()
 		body.healthRect.size.x -= 24
 		body.healthRect.position.x += 12
 		if body.healthRect.size.x <= 0:

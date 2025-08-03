@@ -5,6 +5,8 @@ var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_node("SFXHSlider").set_value_no_signal(GlobalData.sfxVolume)
+	get_node("MusicHSlider").set_value_no_signal(GlobalData.musicVolume)
 	pass # Replace with function body.
 
 
@@ -18,18 +20,26 @@ func _on_back_button_up() -> void:
 		mainMenu.clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
 		mainMenu.clickPlayer.play()
 		await mainMenu.clickPlayer.finished
-	get_tree().paused = false
+	mainMenu.ToggleAll()
 	queue_free()
 	pass # Replace with function body.
 
 
 func _on_sfxh_slider_value_changed(value: float) -> void:
+	mainMenu.clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+	mainMenu.clickPlayer.play()
+	await mainMenu.clickPlayer.finished
 	GlobalData.sfxVolume = value
 	GlobalData.SaveData()
+	mainMenu.clickPlayer.volume_db = GlobalData.sfxVolume
 	pass # Replace with function body.
 
 
 func _on_music_h_slider_value_changed(value: float) -> void:
+	mainMenu.clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+	mainMenu.clickPlayer.play()
+	await mainMenu.clickPlayer.finished
 	GlobalData.musicVolume = value
 	GlobalData.SaveData()
+	mainMenu.musicMainPlayer.volume_db = GlobalData.musicVolume
 	pass # Replace with function body.
