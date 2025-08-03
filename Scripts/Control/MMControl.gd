@@ -2,6 +2,7 @@ extends Control
 
 var MMDLoad = load("uid://ds2tdse6btxsq")
 var levelLoad = load("uid://d1kdwsejf8x15")
+var settingsLoad = load("uid://b4yhoyguxmy3u")
 var creditsLoad = load("uid://c5ig66n7nijgc")
 
 var startNode
@@ -109,6 +110,10 @@ func _on_settings_button_up() -> void:
 		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
 		clickPlayer.play()
 		await clickPlayer.finished
+	ToggleAll()
+	var addedSettings = settingsLoad.instantiate()
+	add_child(addedSettings)
+	addedSettings.mainMenu = self
 	pass # Replace with function body.
 
 

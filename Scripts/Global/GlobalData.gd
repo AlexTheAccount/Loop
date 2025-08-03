@@ -7,8 +7,8 @@ var jumpLimit: int = 0
 var dashTime: float = 0
 var freezeTime: float = 0
 
-var sfxVolume: int = 0
-var musicVolume: int = 0
+var sfxVolume: float = 0
+var musicVolume: float = 0
 
 func SaveData():
 	var file = FileAccess.open("GameData", FileAccess.WRITE)
@@ -18,6 +18,9 @@ func SaveData():
 	file.store_var(jumpLimit)
 	file.store_var(dashTime)
 	file.store_var(freezeTime)
+	
+	file.store_var(sfxVolume)
+	file.store_var(musicVolume)
 	file.close()
 	pass
 
@@ -30,6 +33,9 @@ func LoadData():
 		jumpLimit = file.get_var()
 		dashTime = file.get_var()
 		freezeTime = file.get_var()
+		
+		sfxVolume = file.get_var()
+		musicVolume = file.get_var()
 		file.close()
 	else:
 		SaveData()
