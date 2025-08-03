@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://don77aibrilpa" path="res://Materials/Grey.tres" id="1_3sot4"]
 [ext_resource type="PackedScene" uid="uid://ntp657mu5don" path="res://PackedScenes/Player/Player.tscn" id="2_weqj7"]
-[ext_resource type="PackedScene" uid="uid://ddy8i5cbnnvgs" path="res://PackedScenes/Enemy.tscn" id="3_o8tum"]
+[ext_resource type="PackedScene" uid="uid://ddy8i5cbnnvgs" path="res://PackedScenes/Enemies/Enemy.tscn" id="3_o8tum"]
 [ext_resource type="PackedScene" uid="uid://tft0w0wxxl1l" path="res://PackedScenes/Book/BookTypes/DashBook.tscn" id="4_s1s6k"]
 [ext_resource type="PackedScene" uid="uid://iuy3hb81rvv7" path="res://PackedScenes/DeathFloor.tscn" id="5_cslcc"]
 

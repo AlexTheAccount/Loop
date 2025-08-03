@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm6qmkigdf6dx"]
+
+[ext_resource type="PackedScene" uid="uid://tqtowcrlg6ig" path="res://Blend/EnemySpike.blend" id="1_mpsul"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mpsul"]
+size = Vector3(0.260742, 1.05542, 0.249512)
+
+[node name="EnemySpike" instance=ExtResource("1_mpsul")]
+
+[node name="Area3D" type="Area3D" parent="." index="1" groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00830078, 0.506714, 0.00268555)
+shape = SubResource("BoxShape3D_mpsul")
