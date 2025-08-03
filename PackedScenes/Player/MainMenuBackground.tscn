@@ -11,4 +11,8 @@ transform = Transform3D(-0.891062, 0, -0.453882, 0, 1, 0, 0.453882, 0, -0.891062
 [node name="MenuDeadPlayer" parent="." instance=ExtResource("2_tm4gg")]
 transform = Transform3D(-0.891062, 0, -0.453882, 0, 1, 0, 0.453882, 0, -0.891062, -3.16054, 0, -8.00139)
 
+[node name="PlayerLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+light_energy = 0.2
+
 [node name="Camera3D" type="Camera3D" parent="."]

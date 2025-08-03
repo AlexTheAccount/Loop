@@ -3,6 +3,7 @@ extends Node3D
 var headNode
 var hatNode
 var eyesNode
+var PlayerLight
 
 var blinkTimer = 0
 
@@ -18,6 +19,7 @@ func _ready() -> void:
 	headNode = get_node("Head")
 	hatNode = get_node("Hat")
 	eyesNode = get_node("Eyes")
+	PlayerLight = get_parent().get_node("PlayerLight")
 	
 	orEyeScaY = eyesNode.scale.y
 	ranBlinkAmo = rng.randi_range(1, 10)
@@ -29,6 +31,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if name == "MenuPlayer" && GlobalData.isPlayerDead == true:
+		PlayerLight.visible = false
 		queue_free()
 	elif name == "MenuDeadPlayer" && GlobalData.isPlayerDead == false:
 		queue_free()

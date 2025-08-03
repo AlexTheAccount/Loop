@@ -13,7 +13,7 @@ var rng = RandomNumberGenerator.new()
 var player
 
 func _ready():
-	player = get_parent().get_parent().get_node("Player").get_child(0)
+	player = get_parent().get_parent().get_parent().get_node("Player").get_child(0)
 	SPEED = rng.randf_range(0.6, 0.9)
 	if SPEED < 0:
 		SPEED = -SPEED

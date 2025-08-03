@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cj8m6n1e7td8" path="res://Blend/Enemies/EnemyWall.blend" id="1_7k1dr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k1dr"]
-size = Vector3(12.2027, 8.28357, 3.83533)
+size = Vector3(4.49098, 2.89096, 1.16171)
 
 [node name="EnemyWall" instance=ExtResource("1_7k1dr")]
 
@@ -12,5 +12,5 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0765076, 4.00256, 0.188171)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0842059, -0.0807676, 0.0404198)
 shape = SubResource("BoxShape3D_7k1dr")

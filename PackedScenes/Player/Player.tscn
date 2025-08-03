@@ -61,9 +61,9 @@ shape = SubResource("BoxShape3D_0rwas")
 
 [node name="PlayerUI" parent="CharacterBody3D" instance=ExtResource("2_7mclc")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
-sky_mode = 1
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
+light_energy = 0.2
 
 [connection signal="area_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_area_entered"]
 [connection signal="body_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_body_entered"]

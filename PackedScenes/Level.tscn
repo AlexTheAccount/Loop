@@ -1,37 +1,3519 @@
-[gd_scene load_steps=8 format=3 uid="uid://d1kdwsejf8x15"]
+[gd_scene load_steps=10 format=3 uid="uid://d1kdwsejf8x15"]
 
-[ext_resource type="Material" uid="uid://don77aibrilpa" path="res://Materials/Grey.tres" id="1_3sot4"]
 [ext_resource type="PackedScene" uid="uid://ntp657mu5don" path="res://PackedScenes/Player/Player.tscn" id="2_weqj7"]
-[ext_resource type="PackedScene" uid="uid://tft0w0wxxl1l" path="res://PackedScenes/Book/BookTypes/DashBook.tscn" id="4_s1s6k"]
+[ext_resource type="PackedScene" uid="uid://cjtkx6o05qcca" path="res://PackedScenes/Floor.tscn" id="3_o8tum"]
+[ext_resource type="PackedScene" uid="uid://csf87iojvo4xp" path="res://PackedScenes/Book/BookTypes/FreezeBook.tscn" id="4_cslcc"]
+[ext_resource type="PackedScene" uid="uid://b1rnr76kqf3na" path="res://PackedScenes/Book/BookTypes/JumpBook.tscn" id="4_s1s6k"]
 [ext_resource type="PackedScene" uid="uid://iuy3hb81rvv7" path="res://PackedScenes/DeathFloor.tscn" id="5_cslcc"]
-[ext_resource type="PackedScene" uid="uid://b7jxai2kovetp" path="res://PackedScenes/UI/Spawner.tscn" id="5_ghqqu"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_fa1m1"]
-material = ExtResource("1_3sot4")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_weqj7"]
+[ext_resource type="PackedScene" uid="uid://tft0w0wxxl1l" path="res://PackedScenes/Book/BookTypes/DashBook.tscn" id="6_ghqqu"]
+[ext_resource type="PackedScene" uid="uid://bm6qmkigdf6dx" path="res://PackedScenes/Enemies/EnemySpike.tscn" id="7_asmx7"]
+[ext_resource type="PackedScene" uid="uid://mxsqwslmhrsb" path="res://PackedScenes/Enemies/EnemyWall.tscn" id="8_n8aws"]
+[ext_resource type="PackedScene" uid="uid://b7jxai2kovetp" path="res://PackedScenes/UI/Spawner.tscn" id="9_n8aws"]
 
 [node name="Level" type="Node3D"]
 
-[node name="Floor" type="MeshInstance3D" parent="."]
-transform = Transform3D(21.0465, 0, 0, 0, 2.26957, 0, 0, 0, 18.9296, 0, -1.32395, 0)
-mesh = SubResource("BoxMesh_fa1m1")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
-shape = SubResource("BoxShape3D_weqj7")
-
 [node name="Player" parent="." instance=ExtResource("2_weqj7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94901, 1.05154, 3.19828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.30786, 0)
 
 [node name="DeathFloor" parent="." instance=ExtResource("5_cslcc")]
 
-[node name="DashBook" parent="." instance=ExtResource("4_s1s6k")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0795, -0.189165, -3.31839)
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 3.66995, 0)
 
-[node name="Spawner" parent="." groups=["Enemies"] instance=ExtResource("5_ghqqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96554, 0.164813, -0.876675)
+[node name="Floors" type="Node3D" parent="."]
 
-[node name="Node3D" type="Node3D" parent="Spawner"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.99213)
+[node name="Floor" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 30, 0, -6.8434, -2)
+skeleton = NodePath("../..")
+
+[node name="Floor2" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -4.99386, -2.39374, -23.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor3" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, -2.39374, -23.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor4" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 0.00613642, -5.39374, -23.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor6" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(3, 0, 0, 0, 15, 0, 0, 0, 45, 0.00613642, -5.39374, -74.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor8" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, -5.8434, -42)
+skeleton = NodePath("../..")
+
+[node name="Floor5" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(10, 0, 0, 0, 15, 0, 0, 0, 50, -11.9939, 2.60626, -23.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor7" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -4.99386, 3.60626, -56.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor9" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, 3.60626, -56.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor10" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -4.99386, 0.606259, -71.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor11" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, 0.606259, -71.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor12" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -4.99386, -2.39374, -86.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor13" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, -2.39374, -86.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor14" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 5, 0, 1.1566, -103)
+skeleton = NodePath("../..")
+
+[node name="Floor15" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 5, 8, 4.1566, -103)
+skeleton = NodePath("../..")
+
+[node name="Floor16" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 5, 15, 8.1566, -103)
+skeleton = NodePath("../..")
+
+[node name="Floor17" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 16.0061, 10.6063, -52.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor18" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 16.0061, 10.6063, -76.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor19" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 16.0061, 10.6063, -96.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor20" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(35, 0, 0, 0, 5, 0, 0, 0, 5, 6.00614, 12.6063, -43.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor21" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(15, 0, 0, 0, 5, 0, 0, 0, 5, 0.00613642, 11.6063, -46.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor22" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 30, 22, -6.8434, -26)
+skeleton = NodePath("../..")
+
+[node name="Floor23" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(10, 0, 0, 0, 15, 0, 0, 0, 15, 19.0061, 2.60626, -46.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor24" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -11.9939, 8.60626, 10.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor25" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 50, 0, 0, 0, 5, -11.9939, 27.1332, 23.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor26" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 50, 0, 0, 0, 5, -6.99386, -4.39374, 23.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor27" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 50, 0, 0, 0, 5, -11.9939, -0.393742, 28.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor28" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 50, 0, 0, 0, 5, -16.9939, 3.60626, 28.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor29" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 50, 0, 0, 0, 5, -16.9939, 13.6063, 23.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor30" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(35, 0, 0, 0, 5, 0, 0, 0, 5, -1.68697, 39.6063, 16.0339)
+skeleton = NodePath("../..")
+
+[node name="Floor32" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, 38.6063, 4.03387)
+skeleton = NodePath("../..")
+
+[node name="Floor33" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 35.1566, -14)
+skeleton = NodePath("../..")
+
+[node name="Floor34" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, 44.6063, -28.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor35" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, -4.99386, 41.6063, -43.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor36" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 15, 5.00614, 38.6063, -58.9661)
+skeleton = NodePath("../..")
+
+[node name="Floor37" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(5, 0, 0, 0, 15, 0, 0, 0, 5, 0, 42.1566, -75)
+skeleton = NodePath("../..")
+
+[node name="Floor31" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(3, 0, 0, 0, 15, 0, 0, 0, 45, 0.00613642, 43.6063, -101.966)
+skeleton = NodePath("../..")
+
+[node name="Floor38" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 16.4728, 27.4991, -138.057)
+skeleton = NodePath("../..")
+
+[node name="Floor39" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -0.216762, 27.4991, -174.249)
+skeleton = NodePath("../..")
+
+[node name="Floor40" parent="Floors" instance=ExtResource("3_o8tum")]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, -16.3814, 27.4991, -138.057)
+skeleton = NodePath("../..")
+
+[node name="Books" type="Node3D" parent="."]
+
+[node name="JumpBook" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -16)
+
+[node name="FreezeBook" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 5.20149, -30.7735)
+
+[node name="FreezeBook2" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 11.2918, -51)
+
+[node name="DashBook" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.02477, 11.1063, -50.4375)
+
+[node name="DashBook2" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69066, 11.1063, -50.4186)
+
+[node name="DashBook3" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.88303, 1.6566, -48.634)
+
+[node name="JumpBook2" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, -105)
+
+[node name="FreezeBook3" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 16, -105)
+
+[node name="FreezeBook4" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 10.3309, -47)
+
+[node name="FreezeBook5" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9281, 52.1332, 23.0948)
+
+[node name="DashBook4" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 42.4447, 16)
+
+[node name="DashBook5" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.72255, 42.6566, -13.1275)
+
+[node name="FreezeBook6" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.63443, 42.6566, -15.3893)
+
+[node name="JumpBook3" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.66181, 42.6727, -14.2956)
+
+[node name="FreezeBook7" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.352357, 0.6566, 12.404)
+
+[node name="JumpBook4" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100684, 2.10626, -96.9049)
+
+[node name="DashBook6" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.0976, 18.1063, -90.0469)
+
+[node name="JumpBook5" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6118, 10.1063, -40.3749)
+
+[node name="FreezeBook8" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.99737, 10.1063, -47.0906)
+
+[node name="JumpBook6" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.1158, 28.6063, 28.1638)
+
+[node name="JumpBook7" parent="Books" instance=ExtResource("4_s1s6k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8762, 38.6063, 22.6889)
+
+[node name="DashBook7" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7595, 42.1063, 15.9958)
+
+[node name="DashBook8" parent="Books" instance=ExtResource("6_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.83201, 46.1063, -57.9213)
+
+[node name="FreezeBook9" parent="Books" instance=ExtResource("4_cslcc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0859607, 49.6566, -76.8353)
+
+[node name="StaticEnemies" type="Node3D" parent="."]
+
+[node name="EnemySpike" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29083, 1.67619, -37.885)
+
+[node name="EnemySpike2" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.46488, 1.67619, -39.6603)
+
+[node name="EnemySpike3" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04277, 1.67619, -41.2804)
+
+[node name="EnemySpike4" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.644119, 1.67619, -43.9988)
+
+[node name="EnemySpike5" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.37432, 1.67619, -42.3504)
+
+[node name="EnemySpike6" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.12784, 1.67619, -45.8025)
+
+[node name="EnemySpike7" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52294, 1.67619, -37.7912)
+
+[node name="EnemySpike8" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.86329, 1.67619, -47.39)
+
+[node name="EnemySpike9" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67493, 1.67619, -45.0844)
+
+[node name="EnemySpike10" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.28548, 1.67619, -36.0257)
+
+[node name="EnemyWall" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.43687, 0, 0, 0, 1, 0, 0, 0, 1, 0.0879083, 2.81473, -64.5858)
+
+[node name="EnemyWall2" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.43687, 0, 0, 0, 1, 0, 0, 0, 1, 0.0879083, 2.81473, -79.7064)
+
+[node name="EnemyWall3" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.43687, 0, 0, 0, 1, 0, 0, 0, 1, 15.9679, 19.2002, -77.1991)
+
+[node name="EnemyWall4" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.43687, 0, 0, 0, 1, 0, 0, 0, 1, 15.9679, 19.2002, -56.2599)
+
+[node name="EnemyWall5" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(2.12628, 0, 0, 0, 2.95982, 0, 0, 0, 3.04996, -12.0498, 11.8971, -13.9334)
+
+[node name="EnemyWall6" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(2.12628, 0, 0, 0, 2.95982, 0, 0, 0, 3.04996, -12.0498, 11.8971, -4.96937)
+
+[node name="EnemyWall7" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.00978, 0, 0, 0, 1, 0, 0, 0, 1, -12.1218, 16.8673, 3.24197)
+
+[node name="EnemyWall8" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(1.00978, 0, 0, 0, 1, 0, 0, 0, 1, -12.1218, 16.8673, 16.7072)
+
+[node name="EnemyWall9" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(2.12628, 0, 0, 0, 2.95982, 0, 0, 0, 3.04996, 2.43158, 46.7297, -13.9334)
+
+[node name="EnemyWall10" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(-1.38622e-07, 0, 0.791117, 0, 2.95982, 0, -3.1713, 0, -3.45808e-08, -6.04688, 53.8161, -43.8067)
+
+[node name="EnemyWall11" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(2.12628, 0, 0, 0, 2.95982, 0, 0, 0, 3.04996, 0.120508, 44.9222, -126.153)
+
+[node name="EnemyWall12" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(4.55524, 0, 2.15664, 0, 2.95982, 0, -4.55524, 0, 2.15664, 16.4654, 44.9222, -139.245)
+
+[node name="EnemyWall13" parent="StaticEnemies" instance=ExtResource("8_n8aws")]
+transform = Transform3D(4.55524, 0, -2.15664, 0, 2.95982, 0, 4.55524, 0, 2.15664, 16.3356, 44.9222, -139.115)
+
+[node name="EnemySpike11" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96571, 11.6762, -103.163)
+
+[node name="EnemySpike12" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2886, 15.6762, -105.012)
+
+[node name="EnemySpike13" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.9724, 18.0778, -103.774)
+
+[node name="EnemySpike14" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7793, 18.0778, -103.555)
+
+[node name="EnemySpike15" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.1967, 18.0778, -102.695)
+
+[node name="EnemySpike16" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.7578, 18.0778, -102.005)
+
+[node name="EnemySpike17" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1618, 18.0778, -101.267)
+
+[node name="EnemySpike18" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5792, 18.0778, -100.407)
+
+[node name="EnemySpike19" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4163, 18.0778, -100.276)
+
+[node name="EnemySpike20" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7945, 18.0778, -99.4724)
+
+[node name="EnemySpike21" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5212, 18.0778, -97.9089)
+
+[node name="EnemySpike22" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9488, 18.0778, -98.058)
+
+[node name="EnemySpike23" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1431, 18.0778, -95.425)
+
+[node name="EnemySpike24" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.1732, 18.0778, -96.9793)
+
+[node name="EnemySpike25" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0368, 18.0778, -74.8291)
+
+[node name="EnemySpike26" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8112, 18.0778, -73.5568)
+
+[node name="EnemySpike27" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7955, 18.0778, -70.7574)
+
+[node name="EnemySpike28" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4013, 18.0778, -70.1668)
+
+[node name="EnemySpike29" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5926, 18.0778, -73.4403)
+
+[node name="EnemySpike30" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8793, 18.0778, -73.7509)
+
+[node name="EnemySpike31" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.4531, 18.0778, -71.5218)
+
+[node name="EnemySpike32" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9955, 18.0778, -71.1296)
+
+[node name="EnemySpike33" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6266, 18.0778, -58.6686)
+
+[node name="EnemySpike34" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9798, 18.0778, -59.4747)
+
+[node name="EnemySpike35" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7515, 18.0778, -57.9502)
+
+[node name="EnemySpike36" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4013, 18.0778, -59.1569)
+
+[node name="EnemySpike37" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1456, 18.0778, -58.5437)
+
+[node name="EnemySpike38" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9981, 18.0778, -58.4035)
+
+[node name="EnemySpike39" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9849, 18.0778, -58.8021)
+
+[node name="EnemySpike40" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.958, 18.0778, -57.9107)
+
+[node name="EnemySpike41" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.5029, 10.0848, -52.7061)
+
+[node name="EnemySpike42" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.856, 10.0848, -53.5123)
+
+[node name="EnemySpike43" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.6277, 10.0848, -50.0353)
+
+[node name="EnemySpike44" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2776, 10.0848, -51.2421)
+
+[node name="EnemySpike45" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.0218, 10.0848, -50.6289)
+
+[node name="EnemySpike46" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8744, 10.0848, -50.4887)
+
+[node name="EnemySpike47" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.8612, 10.0848, -50.8873)
+
+[node name="EnemySpike48" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.8342, 10.0848, -51.9482)
+
+[node name="EnemySpike49" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2609, 10.0848, -47.7421)
+
+[node name="EnemySpike50" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2989, 10.0848, -47.8042)
+
+[node name="EnemySpike51" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.2916, 10.0848, -46.8539)
+
+[node name="EnemySpike52" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.3154, 10.0848, -47.6926)
+
+[node name="EnemySpike53" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.0597, 10.0848, -47.0794)
+
+[node name="EnemySpike54" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9122, 10.0848, -46.9392)
+
+[node name="EnemySpike55" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0128, 10.0848, -46.8848)
+
+[node name="EnemySpike56" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.805, 10.0848, -46.7763)
+
+[node name="EnemySpike57" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.80709, 10.0697, -9.60209)
+
+[node name="EnemySpike58" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.45392, 10.0697, -10.4082)
+
+[node name="EnemySpike59" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6036, 10.0697, -8.88368)
+
+[node name="EnemySpike60" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9537, 10.0697, -10.0904)
+
+[node name="EnemySpike61" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.2095, 10.0697, -9.47725)
+
+[node name="EnemySpike62" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3569, 10.0697, -9.33701)
+
+[node name="EnemySpike64" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4757, 10.0697, -8.84418)
+
+[node name="EnemySpike63" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.23653, 10.0697, 0.549606)
+
+[node name="EnemySpike65" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7508, 10.0697, 0.240082)
+
+[node name="EnemySpike66" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.93439, 10.0697, 0.0554628)
+
+[node name="EnemySpike67" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2145, 10.0697, 0.658748)
+
+[node name="EnemySpike68" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.0204, 10.0697, 0.248168)
+
+[node name="EnemySpike69" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8916, 10.0697, -0.1554)
+
+[node name="EnemySpike70" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1473, 10.0697, 0.457794)
+
+[node name="EnemySpike71" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2947, 10.0697, 0.598033)
+
+[node name="EnemySpike72" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1356, 16.0748, 11.6812)
+
+[node name="EnemySpike73" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6552, 16.0748, 12.8177)
+
+[node name="EnemySpike74" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.373, 16.0748, 13.7755)
+
+[node name="EnemySpike75" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.3726, 16.0748, 9.58165)
+
+[node name="EnemySpike76" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8031, 16.0748, 8.76354)
+
+[node name="EnemySpike77" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7758, 16.0748, 10.3351)
+
+[node name="EnemySpike78" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9891, 16.0748, 6.03883)
+
+[node name="EnemySpike79" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2449, 16.0748, 6.65202)
+
+[node name="EnemySpike80" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3923, 16.0748, 6.79226)
+
+[node name="EnemySpike81" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2277, 16.0748, 4.83648)
+
+[node name="EnemySpike82" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.85722, 16.0748, 5.89069)
+
+[node name="EnemySpike83" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4871, 16.0748, 5.32572)
+
+[node name="EnemySpike84" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.5898, 20.5696, 22.9665)
+
+[node name="EnemySpike85" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.1222, 20.5696, 23.8259)
+
+[node name="EnemySpike86" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.10889, 20.5696, 24.517)
+
+[node name="EnemySpike87" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.16614, 20.5696, 21.7988)
+
+[node name="EnemySpike88" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.46332, 20.5696, 22.6713)
+
+[node name="EnemySpike89" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.08083, 20.5696, 21.7954)
+
+[node name="EnemySpike90" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.679, 24.5738, 27.4209)
+
+[node name="EnemySpike93" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6559, 24.5738, 25.9117)
+
+[node name="EnemySpike95" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3863, 24.5738, 27.957)
+
+[node name="EnemySpike91" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9891, 42.0622, 16.8354)
+
+[node name="EnemySpike92" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.14545, 42.0622, 16.9728)
+
+[node name="EnemySpike94" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.3923, 42.0622, 17.5888)
+
+[node name="EnemySpike96" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2277, 42.0622, 15.633)
+
+[node name="EnemySpike97" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.35126, 42.0622, 17.8419)
+
+[node name="EnemySpike98" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.4871, 42.0622, 16.1223)
+
+[node name="EnemySpike99" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1399, 42.0622, 15.4638)
+
+[node name="EnemySpike100" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0214, 42.0622, 16.4001)
+
+[node name="EnemySpike101" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.24586, 42.0622, 14.5021)
+
+[node name="EnemySpike102" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3785, 42.0622, 14.2614)
+
+[node name="EnemySpike103" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2546, 42.0622, 15.0054)
+
+[node name="EnemySpike104" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9409, 42.0622, 14.0414)
+
+[node name="EnemySpike105" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.18952, 42.0622, 15.7921)
+
+[node name="EnemySpike106" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.44526, 42.0622, 16.4053)
+
+[node name="EnemySpike107" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.59269, 42.0622, 16.5455)
+
+[node name="EnemySpike108" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.59865, 42.0622, 15.2377)
+
+[node name="EnemySpike109" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3014, 42.0622, 15.6027)
+
+[node name="EnemySpike110" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90069, 42.0622, 14.9673)
+
+[node name="EnemySpike111" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09615, 42.0622, 17.3578)
+
+[node name="EnemySpike112" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.351881, 42.0622, 17.971)
+
+[node name="EnemySpike113" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49931, 42.0622, 18.1112)
+
+[node name="EnemySpike114" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.590271, 42.0622, 14.9964)
+
+[node name="EnemySpike115" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.41923, 42.0622, 14.3925)
+
+[node name="EnemySpike116" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.405358, 42.0622, 14.0338)
+
+[node name="EnemySpike117" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.31153, 42.5898, -18.9697)
+
+[node name="EnemySpike118" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37303, 42.5898, -17.8797)
+
+[node name="EnemySpike119" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.225593, 42.5898, -17.7394)
+
+[node name="EnemySpike120" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.390161, 42.5898, -19.6952)
+
+[node name="EnemySpike121" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76067, 42.5898, -18.641)
+
+[node name="EnemySpike122" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.13081, 42.5898, -19.206)
+
+[node name="EnemySpike123" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.975697, 42.5898, -20.6668)
+
+[node name="EnemySpike124" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.823, 42.5898, -18.1595)
+
+[node name="EnemySpike125" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.34821, 42.5898, -20.9647)
+
+[node name="EnemySpike126" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.57423, 42.5898, -17.0117)
+
+[node name="EnemySpike127" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.34211, 42.5898, -18.641)
+
+[node name="EnemySpike128" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97197, 42.5898, -19.206)
+
+[node name="EnemySpike129" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.01993, 52.0643, -26.8331)
+
+[node name="EnemySpike130" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.14917, 52.0643, -29.092)
+
+[node name="EnemySpike131" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21165, 52.0643, -28.2961)
+
+[node name="EnemySpike132" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.1071, 42.4489, -140.305)
+
+[node name="EnemySpike133" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3001, 42.4489, -140.087)
+
+[node name="EnemySpike134" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8097, 42.4489, -142.822)
+
+[node name="EnemySpike135" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3217, 42.4489, -138.536)
+
+[node name="EnemySpike136" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9176, 42.4489, -137.798)
+
+[node name="EnemySpike137" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2816, 42.4489, -139.799)
+
+[node name="EnemySpike138" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6631, 42.4489, -136.808)
+
+[node name="EnemySpike139" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.01637, 42.4489, -150.796)
+
+[node name="EnemySpike140" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.5582, 42.4489, -134.44)
+
+[node name="EnemySpike141" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4712, 42.4489, -136.359)
+
+[node name="EnemySpike142" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.0587, 42.4489, -149.243)
+
+[node name="EnemySpike143" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.255, 42.4489, -149.049)
+
+[node name="EnemySpike144" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41373, 42.4489, -150.667)
+
+[node name="EnemySpike145" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.37566, 42.4489, -146.396)
+
+[node name="EnemySpike146" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0557, 42.4489, -144.952)
+
+[node name="EnemySpike147" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0938, 42.4489, -142.416)
+
+[node name="EnemySpike148" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.80119, 42.4489, -143.961)
+
+[node name="EnemySpike149" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6021, 42.4489, -144.938)
+
+[node name="EnemySpike150" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.69629, 42.4489, -141.594)
+
+[node name="EnemySpike151" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.99212, 42.4489, -148.644)
+
+[node name="EnemySpike152" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.862, 42.4489, -134.396)
+
+[node name="EnemySpike153" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.055, 42.4489, -134.177)
+
+[node name="EnemySpike154" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3096, 42.4489, -137.234)
+
+[node name="EnemySpike155" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.0766, 42.4489, -132.627)
+
+[node name="EnemySpike156" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6726, 42.4489, -131.889)
+
+[node name="EnemySpike157" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.1969, 42.4489, -136.117)
+
+[node name="EnemySpike158" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5341, 42.4489, -131.952)
+
+[node name="EnemySpike159" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.0799, 42.4489, -125.142)
+
+[node name="EnemySpike160" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0538, 42.4489, -128.579)
+
+[node name="EnemySpike161" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.2075, 42.4489, -129.388)
+
+[node name="EnemySpike162" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.6332, 42.4489, -149.284)
+
+[node name="EnemySpike163" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8262, 42.4489, -149.066)
+
+[node name="EnemySpike164" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.0139, 42.4489, -149.758)
+
+[node name="EnemySpike165" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6946, 42.4489, -147.048)
+
+[node name="EnemySpike166" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.4437, 42.4489, -146.778)
+
+[node name="EnemySpike167" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5551, 42.4489, -148.439)
+
+[node name="EnemySpike168" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0471, 42.4489, -145.652)
+
+[node name="EnemySpike169" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8111, 42.4489, -144.983)
+
+[node name="EnemySpike170" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0843, 42.4489, -143.419)
+
+[node name="EnemySpike171" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1127, 42.4489, -140.451)
+
+[node name="EnemySpike172" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.79009, 42.4489, -134.453)
+
+[node name="EnemySpike173" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2656, 42.4489, -134.887)
+
+[node name="EnemySpike174" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.71974, 42.4489, -139.567)
+
+[node name="EnemySpike175" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.62218, 42.4489, -136.149)
+
+[node name="EnemySpike176" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8297, 42.4489, -133.783)
+
+[node name="EnemySpike177" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.0364, 42.4489, -125.27)
+
+[node name="EnemySpike178" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.48531, 42.4489, -132.775)
+
+[node name="EnemySpike179" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4019, 42.4489, -130.514)
+
+[node name="EnemySpike180" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3123, 42.4489, -128.399)
+
+[node name="EnemySpike181" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.22206, 42.4489, -127.925)
+
+[node name="EnemySpike182" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9979, 42.4489, -140.148)
+
+[node name="EnemySpike183" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1613, 42.4489, -137.22)
+
+[node name="EnemySpike184" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.671, 42.4489, -139.956)
+
+[node name="EnemySpike185" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1829, 42.4489, -135.67)
+
+[node name="EnemySpike186" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.7788, 42.4489, -134.932)
+
+[node name="EnemySpike187" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1428, 42.4489, -136.933)
+
+[node name="EnemySpike188" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.5243, 42.4489, -133.941)
+
+[node name="EnemySpike189" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1462, 42.4489, -133.137)
+
+[node name="EnemySpike190" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.12, 42.4489, -132.623)
+
+[node name="EnemySpike191" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9918, 42.4489, -131.723)
+
+[node name="EnemySpike192" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.9199, 42.4489, -146.377)
+
+[node name="EnemySpike193" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1163, 42.4489, -146.183)
+
+[node name="EnemySpike194" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.2749, 42.4489, -147.801)
+
+[node name="EnemySpike195" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.06335, 42.4489, -142.831)
+
+[node name="EnemySpike196" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.9169, 42.4489, -142.086)
+
+[node name="EnemySpike197" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.955, 42.4489, -139.55)
+
+[node name="EnemySpike198" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.6624, 42.4489, -141.095)
+
+[node name="EnemySpike199" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.4633, 42.4489, -142.072)
+
+[node name="EnemySpike200" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5575, 42.4489, -138.728)
+
+[node name="EnemySpike201" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4536, 42.4489, -136.447)
+
+[node name="EnemySpike202" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3569, 42.4489, -130.24)
+
+[node name="EnemySpike203" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9162, 42.4489, -131.311)
+
+[node name="EnemySpike204" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1708, 42.4489, -134.367)
+
+[node name="EnemySpike205" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5445, 42.4489, -128.384)
+
+[node name="EnemySpike206" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.5338, 42.4489, -129.022)
+
+[node name="EnemySpike207" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8177, 42.4489, -125.231)
+
+[node name="EnemySpike208" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2424, 42.4489, -126.879)
+
+[node name="EnemySpike209" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.1185, 42.4489, -129.443)
+
+[node name="EnemySpike210" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.2579, 42.4489, -150.264)
+
+[node name="EnemySpike211" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6874, 42.4489, -146.2)
+
+[node name="EnemySpike212" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8751, 42.4489, -146.891)
+
+[node name="EnemySpike213" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8155, 42.4489, -149.972)
+
+[node name="EnemySpike214" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.3049, 42.4489, -143.911)
+
+[node name="EnemySpike215" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.4163, 42.4489, -145.573)
+
+[node name="EnemySpike216" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.8273, 42.4489, -150.827)
+
+[node name="EnemySpike217" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6723, 42.4489, -142.117)
+
+[node name="EnemySpike218" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9455, 42.4489, -140.553)
+
+[node name="EnemySpike219" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.9739, 42.4489, -137.585)
+
+[node name="EnemySpike220" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37366, 42.4489, -137.618)
+
+[node name="EnemySpike221" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.1268, 42.4489, -132.021)
+
+[node name="EnemySpike222" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.58095, 42.4489, -136.701)
+
+[node name="EnemySpike223" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.48339, 42.4489, -133.282)
+
+[node name="EnemySpike224" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.6909, 42.4489, -130.917)
+
+[node name="EnemySpike225" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.327, 42.4489, -128.872)
+
+[node name="EnemySpike226" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.34652, 42.4489, -129.909)
+
+[node name="EnemySpike227" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.1655, 42.4489, -125.594)
+
+[node name="EnemySpike228" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1735, 42.4489, -125.533)
+
+[node name="EnemySpike229" parent="StaticEnemies" instance=ExtResource("7_asmx7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9573, 42.4489, -126.523)
+
+[node name="Spawners" type="Node3D" parent="."]
+
+[node name="Spawner" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 1, -0.168094, 2.10626, -17.8481)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.6222)
+
+[node name="Spawner2" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 1, -0.168094, 2.10626, -32.3131)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner2"]
+transform = Transform3D(1, -0.000471239, 0, 0.000471239, 1, 0, 0, 0, 1, -0.151073, -3.69541e-05, -17.413)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner2"]
+transform = Transform3D(1, -0.000471239, 0, 0.000471239, 1, 0, 0, 0, 1, 0.14852, 0.000104226, -17.413)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner2"]
+transform = Transform3D(1, -0.000471239, 0, 0.000471239, 1, 0, 0, 0, 1, 1.40039, 0.0216601, -14.2408)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner2"]
+transform = Transform3D(1, -0.000471239, 0, 0.000471239, 1, 0, 0, 0, 1, 1.75468, 0.0277617, -7.00008)
+
+[node name="Spawner3" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 13.4351, -0.168094, 2.10626, -57.2671)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.439373)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.426815)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.427579)
+
+[node name="Spawner4" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 14.873, -0.168094, 2.10626, -72.2915)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.439373)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.426815)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.427579)
+
+[node name="Spawner5" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 6.2269, -0.168094, 9.13087, -103.17)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15694)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.14438)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.14515)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.890125)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, 0.902683)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, 0.90192)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Spawner6" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 6.2269, 8.49685, 11.5084, -103.17)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.15694)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.14438)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.14515)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.890125)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, 0.902683)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, 0.90192)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Spawner7" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 15.4748, 16.5542, 18.0686, -96.8224)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.918789)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.906231)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.906994)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.890125)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, 0.902683)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, 0.90192)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84367, 0, -0.158981)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13014, 0, 0.0594441)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8478, 0, 0.303684)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Spawner8" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 7.14697, 16.5542, 18.0686, -80.9195)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.918789)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.906231)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.906994)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.0354)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.02284)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.0236)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84367, 0, -0.158981)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13014, 0, 0.0594441)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8478, 0, 0.303684)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Spawner9" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 8.00999, 16.5542, 18.0686, -73.1871)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.17141)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, 1.18396)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, 1.1832)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.0548)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, 1.06736)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, 1.06659)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84367, 0, -0.158981)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13014, 0, 0.0594441)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8478, 0, 0.303684)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Spawner10" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 8.00999, 16.5542, 18.0686, -60.1982)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.622936)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.610379)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.611142)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.739544)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.726986)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.727749)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84367, 0, -0.158981)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13014, 0, 0.0594441)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8478, 0, 0.303684)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.09342)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.08086)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.08163)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21003)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.19747)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.19824)
+
+[node name="Spawner11" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 8.00999, 20.9965, 10.0807, -50.5477)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.622936)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.610379)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.611142)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.739544)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.726986)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.727749)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.09342)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.08086)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.08163)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.21003)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -1.19747)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner11"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -1.19824)
+
+[node name="Spawner12" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 15.6436, 5.55148, 5.40968, -86.8891)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730648)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.71809)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.718854)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, -0.397454)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, -0.0531363)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, 0.194596)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, 0.476907)
+
+[node name="Spawner13" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 15.6436, -5.40353, 5.40968, -86.8891)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730648)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.71809)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.718854)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, -0.397454)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, -0.0531363)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, 0.194596)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, 0.476907)
+
+[node name="Spawner14" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 15.6436, 5.55148, 8.16112, -71.7316)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730648)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.71809)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.718854)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, -0.397454)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, -0.0531363)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, 0.194596)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner14"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.829379, 0, 0.476907)
+
+[node name="Spawner15" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(6.04489, 0, 0, 0, 1, 0, 0, 0, 15.6436, -5.40353, 8.16112, -71.7316)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.730648)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.71809)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.718854)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, -0.397454)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, -0.0531363)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, 0.194596)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.880395, 0, 0.476907)
+
+[node name="Spawner16" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(10.2352, 0, 0, 0, 1, 0, 0, 0, 19.3405, -12.1312, 10.0445, -24.3789)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.622936)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.610379)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.611142)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.739544)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.28647, 0, -0.726986)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.244516, 0, -0.727749)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21302, 0, -0.158981)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.49949, 0, 0.0594441)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.21714, 0, 0.303684)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.84367, 0, -0.158981)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.13014, 0, 0.0594441)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.8478, 0, 0.303684)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00686, 0, -0.158981)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17228, 0, 0.0594441)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00273, 0, 0.303684)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37621, 0, -0.158981)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.44307, 0, 0.0594441)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.37208, 0, 0.303684)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223722, 0, -1.10764)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.510191, 0, -1.09509)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0207943, 0, -1.09585)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.223722, 0, -1.22425)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.510191, 0, -1.21169)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0207943, 0, -1.21246)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22233, 0, -0.622936)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.935862, 0, -0.610379)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46685, 0, -0.611142)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.22233, 0, -0.739544)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.935862, 0, -0.726986)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46685, 0, -0.727749)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27867, 0, -0.622936)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56514, 0, -0.610379)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03416, 0, -0.611142)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27867, 0, -0.739544)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.56514, 0, -0.726986)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03416, 0, -0.727749)
+
+[node name="Spawner17" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(10.2352, 0, 0, 0, 1, 0, 0, 0, 7.18712, -12.1312, 10.0445, -8.75546)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.417809)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.14672)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.0729043)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.343994)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.417809)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.14672)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.0729043)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.343994)
+
+[node name="Spawner18" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(10.2352, 0, 0, 0, 1, 0, 0, 0, 7.18712, -12.1312, 10.0445, -0.284351)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.417809)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.14672)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.0729043)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.343994)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.417809)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.14672)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.0729043)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner18"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.343994)
+
+[node name="Spawner19" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(10.2352, 0, 0, 0, 1, 0, 0, 0, 15.6892, -12.1312, 15.9838, 9.75744)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.417809)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, -0.14672)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.0729043)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12508, -9.53674e-07, 0.343994)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.417809)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, -0.14672)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.0729043)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.9752, -9.53674e-07, 0.343994)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14833, -9.53674e-07, -0.417809)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14833, -9.53674e-07, -0.14672)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14833, -9.53674e-07, 0.0729043)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14833, -9.53674e-07, 0.343994)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2982, -9.53674e-07, -0.417809)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2982, -9.53674e-07, -0.14672)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2982, -9.53674e-07, 0.0729043)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2982, -9.53674e-07, 0.343994)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52881, -9.53674e-07, -0.417809)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52881, -9.53674e-07, -0.14672)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52881, -9.53674e-07, 0.0729043)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.52881, -9.53674e-07, 0.343994)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37894, -9.53674e-07, -0.417809)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37894, -9.53674e-07, -0.14672)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37894, -9.53674e-07, 0.0729043)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner19"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37894, -9.53674e-07, 0.343994)
+
+[node name="Spawner20" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.13223, 0, 0, 0, 1, 0, 0, 0, 7.18712, -7.08174, 20.5537, 23.784)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.547111)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.8182)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.03782)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.30891)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.547111)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.8182)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.03782)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.30891)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.55057)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.27948)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.05985)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -0.788766)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.55057)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.27948)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.05985)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner20"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -0.788766)
+
+[node name="Spawner21" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.13223, 0, 0, 0, 1, 0, 0, 0, 7.18712, -12.0041, 24.6499, 27.2697)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.547111)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.8182)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.03782)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.30891)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.547111)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.8182)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.03782)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner21"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.30891)
+
+[node name="Spawner22" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(-0.0219458, 0, -7.18705, 0, 1, 0, 5.13218, 0, -0.0307326, -16.9767, 28.4763, 28.0039)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.417809)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, -0.14672)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.0729043)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.864516, -9.53674e-07, 0.343994)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.417809)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, -0.14672)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.0729043)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.01439, -9.53674e-07, 0.343994)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.547111)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 0.8182)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.03782)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, 1.30891)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.547111)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 0.8182)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.03782)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, 1.30891)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.55057)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.27948)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -1.05985)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227539, 9.53674e-07, -0.788766)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.55057)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.27948)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -1.05985)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner22"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0776625, 9.53674e-07, -0.788766)
+
+[node name="Spawner23" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.13223, 0, 0, 0, 1, 0, 0, 0, 7.18712, -17.0249, 38.5647, 23.784)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320394, -9.53674e-07, 0.460227)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320394, -9.53674e-07, 0.731316)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320394, -9.53674e-07, 0.950941)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.320394, -9.53674e-07, 1.22203)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170518, -9.53674e-07, 0.460227)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170518, -9.53674e-07, 0.731316)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170518, -9.53674e-07, 0.950941)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.170518, -9.53674e-07, 1.22203)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995878, 9.53674e-07, 0.104831)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995878, 9.53674e-07, 0.37592)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995878, 9.53674e-07, 0.595545)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.995878, 9.53674e-07, 0.866634)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846002, 9.53674e-07, 0.104831)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846002, 9.53674e-07, 0.37592)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846002, 9.53674e-07, 0.595545)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.846002, 9.53674e-07, 0.866634)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.930004, 9.53674e-07, -1.29657)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.930004, 9.53674e-07, -1.02548)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.930004, 9.53674e-07, -0.805859)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.930004, 9.53674e-07, -0.53477)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780128, 9.53674e-07, -1.29657)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780128, 9.53674e-07, -1.02548)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780128, 9.53674e-07, -0.805859)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.780128, 9.53674e-07, -0.53477)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131371, -9.53674e-07, 0.460227)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131371, -9.53674e-07, 0.731316)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131371, -9.53674e-07, 0.950941)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.131371, -9.53674e-07, 1.22203)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281247, -9.53674e-07, 0.460227)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281247, -9.53674e-07, 0.731316)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281247, -9.53674e-07, 0.950941)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner23"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.281247, -9.53674e-07, 1.22203)
+
+[node name="Spawner24" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(35.4399, 0, 0, 0, 1, 0, 0, 0, 5.27505, -1.78335, 41.7696, 16.0551)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646587, 0, 0)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646587, 0, -0.30667)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.646587, 0, 0.233356)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742418, 0, 0)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742418, 0, -0.30667)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.742418, 0, 0.233356)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, 1.32487)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, 1.0182)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, 1.55823)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, 1.32487)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, 1.0182)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, 1.55823)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, -1.72018)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, -2.02685)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.499962, 0, -1.48682)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, -1.72018)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, -2.02685)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.595792, 0, -1.48682)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248504, 0, -1.72018)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248504, 0, -2.02685)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.248504, 0, -1.48682)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344335, 0, -1.72018)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344335, 0, -2.02685)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.344335, 0, -1.48682)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0503384, -3.8147e-06, 1.24356)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0503384, -3.8147e-06, 0.936891)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0503384, -3.8147e-06, 1.47692)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146169, -3.8147e-06, 1.24356)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146169, -3.8147e-06, 0.936891)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146169, -3.8147e-06, 1.47692)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165433, -3.8147e-06, 1.12905)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165433, -3.8147e-06, 0.822381)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.165433, -3.8147e-06, 1.36241)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0696025, -3.8147e-06, 1.12905)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0696025, -3.8147e-06, 0.822381)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0696025, -3.8147e-06, 1.36241)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286482, -3.8147e-06, -0.0404091)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286482, -3.8147e-06, -0.347079)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.286482, -3.8147e-06, 0.192947)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190651, -3.8147e-06, -0.0404091)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190651, -3.8147e-06, -0.347079)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner24"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190651, -3.8147e-06, 0.192947)
+
+[node name="Spawner25" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.13223, 0, 0, 0, 1, 0, 0, 0, 15.6859, 5.08496, 45.8794, 4.12843)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, 0.339103)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, 0.263187)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, 0.180787)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, 0.339103)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, 0.263187)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, 0.180787)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, -0.150714)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, -0.22663)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17384, 0, -0.30903)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, -0.150714)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, -0.22663)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.44579, 0, -0.30903)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, 0.339103)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, 0.263187)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, 0.180787)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, 0.339103)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, 0.263187)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, 0.180787)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, -0.150714)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, -0.22663)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7568, 0, -0.30903)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, -0.150714)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, -0.22663)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.02875, 0, -0.30903)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, 0.339103)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, 0.263187)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, 0.180787)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, 0.339103)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, 0.263187)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, 0.180787)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, -0.150714)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, -0.22663)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0445, 0, -0.30903)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, -0.150714)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, -0.22663)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77254, 0, -0.30903)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, 0.339103)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, 0.263187)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, 0.180787)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, 0.339103)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, 0.263187)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, 0.180787)
+
+[node name="Node3D43" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, -0.150714)
+
+[node name="Node3D44" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, -0.22663)
+
+[node name="Node3D45" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.46154, 0, -0.30903)
+
+[node name="Node3D46" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, -0.150714)
+
+[node name="Node3D47" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, -0.22663)
+
+[node name="Node3D48" type="Node3D" parent="Spawners/Spawner25"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18959, 0, -0.30903)
+
+[node name="Spawner26" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(15.0899, 0, 0, 0, 1, 0, 0, 0, 15.6859, -0.0441532, 42.4768, -13.7595)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.849486)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.77357)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.69117)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.849486)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.77357)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.69117)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.359668)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.283752)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.201352)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.359668)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.283752)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.201352)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.849486)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.77357)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.69117)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.849486)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.77357)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.69117)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.359668)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.283752)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.201352)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.359668)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.283752)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.201352)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.339103)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.263187)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.180787)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.339103)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.263187)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.180787)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.150714)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.22663)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.30903)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.150714)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.22663)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.30903)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.339103)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.263187)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.180787)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.339103)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.263187)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.180787)
+
+[node name="Node3D43" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.150714)
+
+[node name="Node3D44" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.22663)
+
+[node name="Node3D45" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.30903)
+
+[node name="Node3D46" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.150714)
+
+[node name="Node3D47" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.22663)
+
+[node name="Node3D48" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.30903)
+
+[node name="Node3D49" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.137028)
+
+[node name="Node3D50" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.212944)
+
+[node name="Node3D51" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.295344)
+
+[node name="Node3D52" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.137028)
+
+[node name="Node3D53" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.212944)
+
+[node name="Node3D54" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.295344)
+
+[node name="Node3D55" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.626846)
+
+[node name="Node3D56" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.702762)
+
+[node name="Node3D57" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.785162)
+
+[node name="Node3D58" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.626846)
+
+[node name="Node3D59" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.702762)
+
+[node name="Node3D60" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.785162)
+
+[node name="Node3D61" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.137028)
+
+[node name="Node3D62" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.212944)
+
+[node name="Node3D63" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.295344)
+
+[node name="Node3D64" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.137028)
+
+[node name="Node3D65" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.212944)
+
+[node name="Node3D66" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.295344)
+
+[node name="Node3D67" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.626846)
+
+[node name="Node3D68" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.702762)
+
+[node name="Node3D69" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.785162)
+
+[node name="Node3D70" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.626846)
+
+[node name="Node3D71" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.702762)
+
+[node name="Node3D72" type="Node3D" parent="Spawners/Spawner26"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.785162)
+
+[node name="Spawner27" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.99664, 0, 0, 0, 1, 0, 0, 0, 15.6859, 4.74106, 52.1004, -28.7805)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.849486)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.77357)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.69117)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.849486)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.77357)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.69117)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.359668)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.283752)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.201352)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.359668)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.283752)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.201352)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.849486)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.77357)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.69117)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.849486)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.77357)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.69117)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.359668)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.283752)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.201352)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.359668)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.283752)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.201352)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.339103)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.263187)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.180787)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.339103)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.263187)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.180787)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.150714)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.22663)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.30903)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.150714)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.22663)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.30903)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.339103)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.263187)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.180787)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.339103)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.263187)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.180787)
+
+[node name="Node3D43" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.150714)
+
+[node name="Node3D44" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.22663)
+
+[node name="Node3D45" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.30903)
+
+[node name="Node3D46" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.150714)
+
+[node name="Node3D47" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.22663)
+
+[node name="Node3D48" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.30903)
+
+[node name="Node3D49" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.137028)
+
+[node name="Node3D50" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.212944)
+
+[node name="Node3D51" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.295344)
+
+[node name="Node3D52" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.137028)
+
+[node name="Node3D53" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.212944)
+
+[node name="Node3D54" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.295344)
+
+[node name="Node3D55" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.626846)
+
+[node name="Node3D56" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.702762)
+
+[node name="Node3D57" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.785162)
+
+[node name="Node3D58" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.626846)
+
+[node name="Node3D59" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.702762)
+
+[node name="Node3D60" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.785162)
+
+[node name="Node3D61" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.137028)
+
+[node name="Node3D62" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.212944)
+
+[node name="Node3D63" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.295344)
+
+[node name="Node3D64" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.137028)
+
+[node name="Node3D65" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.212944)
+
+[node name="Node3D66" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.295344)
+
+[node name="Node3D67" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.626846)
+
+[node name="Node3D68" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.702762)
+
+[node name="Node3D69" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.785162)
+
+[node name="Node3D70" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.626846)
+
+[node name="Node3D71" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.702762)
+
+[node name="Node3D72" type="Node3D" parent="Spawners/Spawner27"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.785162)
+
+[node name="Spawner28" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.99664, 0, 0, 0, 1, 0, 0, 0, 15.6859, -5.06641, 49.0034, -44.1794)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, 0.4775)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, 0.401584)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, 0.319183)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, 0.4775)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, 0.401584)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, 0.319183)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, -0.012318)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, -0.088234)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07408, 0, -0.170634)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, -0.012318)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, -0.088234)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80213, 0, -0.170634)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, 0.4775)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, 0.401584)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, 0.319183)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, 0.4775)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, 0.401584)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, 0.319183)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, -0.012318)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, -0.088234)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49112, 0, -0.170634)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, -0.012318)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, -0.088234)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21917, 0, -0.170634)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -0.421696)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -0.497612)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -0.580012)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -0.421696)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -0.497612)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -0.580012)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -0.911514)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -0.98743)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.34533, 0, -1.06983)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -0.911514)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -0.98743)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07337, 0, -1.06983)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -0.421696)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -0.497612)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -0.580012)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -0.421696)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -0.497612)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -0.580012)
+
+[node name="Node3D43" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -0.911514)
+
+[node name="Node3D44" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -0.98743)
+
+[node name="Node3D45" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.76237, 0, -1.06983)
+
+[node name="Node3D46" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -0.911514)
+
+[node name="Node3D47" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -0.98743)
+
+[node name="Node3D48" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.49041, 0, -1.06983)
+
+[node name="Node3D49" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -0.834549)
+
+[node name="Node3D50" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -0.910465)
+
+[node name="Node3D51" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -0.992866)
+
+[node name="Node3D52" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -0.834549)
+
+[node name="Node3D53" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -0.910465)
+
+[node name="Node3D54" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -0.992866)
+
+[node name="Node3D55" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -1.32437)
+
+[node name="Node3D56" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -1.40028)
+
+[node name="Node3D57" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.777701, 0, -1.48268)
+
+[node name="Node3D58" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -1.32437)
+
+[node name="Node3D59" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -1.40028)
+
+[node name="Node3D60" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.505747, 0, -1.48268)
+
+[node name="Node3D61" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -0.834549)
+
+[node name="Node3D62" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -0.910465)
+
+[node name="Node3D63" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -0.992866)
+
+[node name="Node3D64" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -0.834549)
+
+[node name="Node3D65" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -0.910465)
+
+[node name="Node3D66" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -0.992866)
+
+[node name="Node3D67" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -1.32437)
+
+[node name="Node3D68" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -1.40028)
+
+[node name="Node3D69" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194745, 0, -1.48268)
+
+[node name="Node3D70" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -1.32437)
+
+[node name="Node3D71" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -1.40028)
+
+[node name="Node3D72" type="Node3D" parent="Spawners/Spawner28"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0772092, 0, -1.48268)
+
+[node name="Spawner29" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(5.99664, 0, 0, 0, 1, 0, 0, 0, 15.6859, 5.03331, 46.0823, -59.1511)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.849486)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.77357)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.69117)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.849486)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.77357)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.69117)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.359668)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.283752)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, 0.201352)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.359668)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.283752)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, 0.201352)
+
+[node name="Node3D13" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.849486)
+
+[node name="Node3D14" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.77357)
+
+[node name="Node3D15" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.69117)
+
+[node name="Node3D16" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.849486)
+
+[node name="Node3D17" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.77357)
+
+[node name="Node3D18" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.69117)
+
+[node name="Node3D19" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.359668)
+
+[node name="Node3D20" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.283752)
+
+[node name="Node3D21" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, 0.201352)
+
+[node name="Node3D22" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.359668)
+
+[node name="Node3D23" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.283752)
+
+[node name="Node3D24" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, 0.201352)
+
+[node name="Node3D25" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.339103)
+
+[node name="Node3D26" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.263187)
+
+[node name="Node3D27" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, 0.180787)
+
+[node name="Node3D28" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.339103)
+
+[node name="Node3D29" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.263187)
+
+[node name="Node3D30" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, 0.180787)
+
+[node name="Node3D31" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.150714)
+
+[node name="Node3D32" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.22663)
+
+[node name="Node3D33" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.58765, 0, -0.30903)
+
+[node name="Node3D34" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.150714)
+
+[node name="Node3D35" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.22663)
+
+[node name="Node3D36" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3157, 0, -0.30903)
+
+[node name="Node3D37" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.339103)
+
+[node name="Node3D38" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.263187)
+
+[node name="Node3D39" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, 0.180787)
+
+[node name="Node3D40" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.339103)
+
+[node name="Node3D41" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.263187)
+
+[node name="Node3D42" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, 0.180787)
+
+[node name="Node3D43" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.150714)
+
+[node name="Node3D44" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.22663)
+
+[node name="Node3D45" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.00469, 0, -0.30903)
+
+[node name="Node3D46" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.150714)
+
+[node name="Node3D47" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.22663)
+
+[node name="Node3D48" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.732739, 0, -0.30903)
+
+[node name="Node3D49" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.137028)
+
+[node name="Node3D50" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.212944)
+
+[node name="Node3D51" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.295344)
+
+[node name="Node3D52" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.137028)
+
+[node name="Node3D53" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.212944)
+
+[node name="Node3D54" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.295344)
+
+[node name="Node3D55" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.626846)
+
+[node name="Node3D56" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.702762)
+
+[node name="Node3D57" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.876322, 0, -0.785162)
+
+[node name="Node3D58" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.626846)
+
+[node name="Node3D59" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.702762)
+
+[node name="Node3D60" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14828, 0, -0.785162)
+
+[node name="Node3D61" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.137028)
+
+[node name="Node3D62" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.212944)
+
+[node name="Node3D63" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.295344)
+
+[node name="Node3D64" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.137028)
+
+[node name="Node3D65" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.212944)
+
+[node name="Node3D66" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.295344)
+
+[node name="Node3D67" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.626846)
+
+[node name="Node3D68" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.702762)
+
+[node name="Node3D69" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.45928, 0, -0.785162)
+
+[node name="Node3D70" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.626846)
+
+[node name="Node3D71" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.702762)
+
+[node name="Node3D72" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.73123, 0, -0.785162)
+
+[node name="Node3D73" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 1.1737)
+
+[node name="Node3D74" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 1.09779)
+
+[node name="Node3D75" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 1.01539)
+
+[node name="Node3D76" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 1.1737)
+
+[node name="Node3D77" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 1.09779)
+
+[node name="Node3D78" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 1.01539)
+
+[node name="Node3D79" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 0.683887)
+
+[node name="Node3D80" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 0.607971)
+
+[node name="Node3D81" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42051, 0, 0.525571)
+
+[node name="Node3D82" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 0.683887)
+
+[node name="Node3D83" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 0.607971)
+
+[node name="Node3D84" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.14856, 0, 0.525571)
+
+[node name="Node3D85" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 1.1737)
+
+[node name="Node3D86" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 1.09779)
+
+[node name="Node3D87" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 1.01539)
+
+[node name="Node3D88" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 1.1737)
+
+[node name="Node3D89" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 1.09779)
+
+[node name="Node3D90" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 1.01539)
+
+[node name="Node3D91" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 0.683887)
+
+[node name="Node3D92" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 0.607971)
+
+[node name="Node3D93" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.837554, 0, 0.525571)
+
+[node name="Node3D94" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 0.683887)
+
+[node name="Node3D95" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 0.607971)
+
+[node name="Node3D96" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5656, 0, 0.525571)
+
+[node name="Node3D97" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -0.51066)
+
+[node name="Node3D98" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -0.586576)
+
+[node name="Node3D99" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -0.668976)
+
+[node name="Node3D100" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -0.51066)
+
+[node name="Node3D101" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -0.586576)
+
+[node name="Node3D102" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -0.668976)
+
+[node name="Node3D103" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -1.00048)
+
+[node name="Node3D104" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -1.07639)
+
+[node name="Node3D105" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.52976, 0, -1.15879)
+
+[node name="Node3D106" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -1.00048)
+
+[node name="Node3D107" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -1.07639)
+
+[node name="Node3D108" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25781, 0, -1.15879)
+
+[node name="Node3D109" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -0.51066)
+
+[node name="Node3D110" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -0.586576)
+
+[node name="Node3D111" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -0.668976)
+
+[node name="Node3D112" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -0.51066)
+
+[node name="Node3D113" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -0.586576)
+
+[node name="Node3D114" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -0.668976)
+
+[node name="Node3D115" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -1.00048)
+
+[node name="Node3D116" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -1.07639)
+
+[node name="Node3D117" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.946803, 0, -1.15879)
+
+[node name="Node3D118" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -1.00048)
+
+[node name="Node3D119" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -1.07639)
+
+[node name="Node3D120" type="Node3D" parent="Spawners/Spawner29"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.674849, 0, -1.15879)
+
+[node name="Spawner30" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(31.3563, 0, 0, 0, 1, 0, 0, 0, 32.0233, 16.1751, 42.4367, -138.813)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.3795)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.230614)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.0347833)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.103502)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.252387)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.448218)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.3795)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.230614)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.0347833)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.103502)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.252387)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner30"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.448218)
+
+[node name="Spawner31" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(-31.3561, 0, -0.100603, 0, 1, 0, 0.0985073, 0, -32.0232, -16.7307, 42.4367, -138.813)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.3795)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.230614)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.0347833)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.103502)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.252387)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.448218)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.3795)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.230614)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.0347833)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.103502)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.252387)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner31"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.448218)
+
+[node name="Spawner32" parent="Spawners" groups=["Enemies"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(0.431785, 0, 32.0203, 0, 1, 0, -31.3533, 0, 0.44097, -0.0820904, 42.4367, -174.511)
+
+[node name="Node3D" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.3795)
+
+[node name="Node3D2" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.230614)
+
+[node name="Node3D3" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, 0.0347833)
+
+[node name="Node3D4" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.103502)
+
+[node name="Node3D5" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.252387)
+
+[node name="Node3D6" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.773803, 7.62939e-06, -0.448218)
+
+[node name="Node3D7" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.3795)
+
+[node name="Node3D8" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.230614)
+
+[node name="Node3D9" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, 0.0347833)
+
+[node name="Node3D10" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.103502)
+
+[node name="Node3D11" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.252387)
+
+[node name="Node3D12" type="Node3D" parent="Spawners/Spawner32"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.448218)
+
+[node name="BossSpawner" parent="Spawners" groups=["Bosses"] instance=ExtResource("9_n8aws")]
+transform = Transform3D(66.0391, 0, 0, 0, 1, 0, 0, 0, 71.7579, 0, 45.7322, -158.955)
