@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://ie4qsxeifyj5"]
+
+[ext_resource type="Script" uid="uid://b73pcogyra1qk" path="res://Scripts/Control/GameControlsControl.gd" id="1_hga5h"]
+
+[node name="GameControls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hga5h")
+
+[node name="AbilityDetails" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = -0.012
+anchor_right = 0.75
+anchor_bottom = 0.741
+offset_top = 7.776
+offset_right = -6.10352e-05
+offset_bottom = -0.16803
+mouse_filter = 2
+text = "WASD To Move
+Left Mouse Button To Fire"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.336
+anchor_top = 0.889
+anchor_right = 0.664
+anchor_bottom = 1.0
+offset_left = 0.427979
+offset_top = -0.0720215
+offset_right = -0.427979
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back
+"
+
+[connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

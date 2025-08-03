@@ -46,8 +46,8 @@ func _on_ability_scroll_value_changed(value: float) -> void:
 				addedDashBoostsIcon.position.x = addedDashBoostsIcon.global_position.x + i * 100
 				iconsNode.add_child(addedDashBoostsIcon)
 		2.0:
+			abilityNameNode.text = "Freeze Shot"
 			for i in range(GlobalData.freezeTime * 10):
-				abilityNameNode.text = "Freeze Shot"
 				var addedFreezeShotIcon = FreezeShotIconLoad.instantiate()
 				iconsNode.add_child(addedFreezeShotIcon)
 			

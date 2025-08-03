@@ -49,6 +49,8 @@ offset_left = 81.25
 offset_top = 6.0
 offset_right = -81.75
 offset_bottom = 0.00499725
+mouse_filter = 2
+alignment = 1
 
 [node name="Icons" type="Control" parent="."]
 layout_mode = 1

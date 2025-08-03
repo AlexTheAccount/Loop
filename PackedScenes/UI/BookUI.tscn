@@ -36,6 +36,7 @@ anchor_bottom = 0.051
 offset_left = -0.264038
 offset_right = 0.263977
 offset_bottom = -0.0480003
+mouse_filter = 2
 
 [node name="Icons" type="Control" parent="."]
 layout_mode = 1
@@ -57,5 +58,6 @@ anchor_right = 1.0
 anchor_bottom = 0.836
 offset_top = -4.096
 offset_bottom = 0.271973
+mouse_filter = 2
 
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]

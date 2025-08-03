@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ntp657mu5don"]
+[gd_scene load_steps=10 format=3 uid="uid://ntp657mu5don"]
 
 [ext_resource type="Script" uid="uid://bylp4cxnnl3xt" path="res://Scripts/Body/PlayerBody.gd" id="1_m6ro6"]
 [ext_resource type="PackedScene" uid="uid://b0qw62wntixs5" path="res://PackedScenes/UI/PlayerUI.tscn" id="2_7mclc"]
 [ext_resource type="PackedScene" uid="uid://dn11a5vf40iy4" path="res://Blend/Player/Player.blend" id="2_cma7h"]
 [ext_resource type="PackedScene" uid="uid://cy524lpekf6g8" path="res://Blend/Player/PlayerDashing.blend" id="3_kngyk"]
 [ext_resource type="Material" uid="uid://qtb62t4rhvkt" path="res://Materials/WhiteTrans.tres" id="4_v6n4g"]
+[ext_resource type="PackedScene" uid="uid://ie4qsxeifyj5" path="res://PackedScenes/UI/Menus/GameControlsMenu.tscn" id="6_s6kpy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rwas"]
 
@@ -60,6 +61,8 @@ collision_mask = 2
 shape = SubResource("BoxShape3D_0rwas")
 
 [node name="PlayerUI" parent="CharacterBody3D" instance=ExtResource("2_7mclc")]
+
+[node name="GameControls" parent="CharacterBody3D" instance=ExtResource("6_s6kpy")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
