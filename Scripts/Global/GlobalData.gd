@@ -7,6 +7,9 @@ var jumpLimit: int = 0
 var dashTime: float = 0
 var freezeTime: float = 0
 
+var sfxVolume: int = 0
+var musicVolume: int = 0
+
 func SaveData():
 	var file = FileAccess.open("GameData", FileAccess.WRITE)
 	file.store_var(loopNum)

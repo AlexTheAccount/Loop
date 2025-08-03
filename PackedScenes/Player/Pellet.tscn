@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://6p3xnxkixoqb"]
+[gd_scene load_steps=6 format=3 uid="uid://6p3xnxkixoqb"]
 
 [ext_resource type="Script" uid="uid://c0kdgeiphn4qx" path="res://Scripts/PelletArea.gd" id="1_na5om"]
 [ext_resource type="PackedScene" uid="uid://318r3elxwhu2" path="res://Blend/Pellet.blend" id="2_bgl2n"]
+[ext_resource type="AudioStream" uid="uid://b1p4srvkp530r" path="res://SFX/PelletShot.wav" id="3_5gl0n"]
+[ext_resource type="AudioStream" uid="uid://bkx7oji34que" path="res://SFX/Hit.wav" id="4_i6jn7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vbjkq"]
 
@@ -17,5 +19,11 @@ script = ExtResource("1_na5om")
 shape = SubResource("BoxShape3D_vbjkq")
 
 [node name="Pellet" parent="Area3D/CollisionShape3D" instance=ExtResource("2_bgl2n")]
+
+[node name="PelletShotPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5gl0n")
+
+[node name="HitPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_i6jn7")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

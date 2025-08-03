@@ -8,6 +8,9 @@ var abilityNameNode
 var iconsNode
 var abilityDetailsNode
 var bookAreaNode
+var pagePlayer
+var rng = RandomNumberGenerator.new()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
@@ -16,6 +19,11 @@ func _ready() -> void:
 	abilityNameNode = get_node("AbilityName")
 	iconsNode = get_node("Icons")
 	abilityDetailsNode = get_node("AbilityDetails")
+	
+	pagePlayer = get_node("PagePlayer")
+	pagePlayer.volume_db = GlobalData.sfxVolume
+	pagePlayer.pitch_scale = rng.randf_range(0.6, 1.2)
+	pagePlayer.play()
 	pass # Replace with function body.
 
 

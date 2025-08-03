@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cds4kxtfn56wb"]
+[gd_scene load_steps=3 format=3 uid="uid://cds4kxtfn56wb"]
 
 [ext_resource type="Script" uid="uid://c0lcu5txdj6ry" path="res://Scripts/UI/BookUI.gd" id="1_gd456"]
+[ext_resource type="AudioStream" uid="uid://dhcog0kf0y16p" path="res://SFX/Page.wav" id="2_togv2"]
 
 [node name="BookUI" type="Control"]
 layout_mode = 3
@@ -59,5 +60,8 @@ anchor_bottom = 0.836
 offset_top = -4.096
 offset_bottom = 0.271973
 mouse_filter = 2
+
+[node name="PagePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_togv2")
 
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
