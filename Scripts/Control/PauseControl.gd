@@ -7,6 +7,8 @@ var FreezeShotIconLoad = load("uid://db3exn288okc4")
 var abilityScrollNode
 var abilityNameNode
 var iconsNode
+var clickPlayer
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,6 +17,8 @@ func _ready() -> void:
 	abilityScrollNode = get_node("AbilityScroll")
 	abilityNameNode = get_node("AbilityScroll/AbilityName")
 	iconsNode = get_node("Icons")
+	clickPlayer = get_node("ClickPlayer")
+	clickPlayer.volume_db = GlobalData.sfxVolume
 	_on_ability_scroll_value_changed(0.0)
 	pass # Replace with function body.
 
@@ -25,6 +29,10 @@ func _process(delta: float) -> void:
 
 
 func _on_back_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	get_tree().paused = false
 	queue_free()
 	pass # Replace with function body.
@@ -51,6 +59,9 @@ func _on_ability_scroll_value_changed(value: float) -> void:
 				var addedFreezeShotIcon = FreezeShotIconLoad.instantiate()
 				iconsNode.add_child(addedFreezeShotIcon)
 			
+	clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+	clickPlayer.play()
+	await clickPlayer.finished
 	pass # Replace with function body.
 
 func ClearIcons():

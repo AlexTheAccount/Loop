@@ -8,6 +8,7 @@ var abilityNameNode
 var iconsNode
 var abilityDetailsNode
 var bookAreaNode
+var clickPlayer
 var pagePlayer
 var rng = RandomNumberGenerator.new()
 
@@ -24,6 +25,9 @@ func _ready() -> void:
 	pagePlayer.volume_db = GlobalData.sfxVolume
 	pagePlayer.pitch_scale = rng.randf_range(0.6, 1.2)
 	pagePlayer.play()
+	
+	clickPlayer = get_node("ClickPlayer")
+	clickPlayer.volume_db = GlobalData.sfxVolume
 	pass # Replace with function body.
 
 
@@ -33,6 +37,10 @@ func _process(delta: float) -> void:
 
 
 func _on_back_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	get_tree().paused = false
 	queue_free()
 	pass # Replace with function body.

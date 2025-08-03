@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgwpp6r4aqbmm"]
+[gd_scene load_steps=3 format=3 uid="uid://cgwpp6r4aqbmm"]
 
 [ext_resource type="Script" uid="uid://bi84w8n7pyvcm" path="res://Scripts/Control/PauseControl.gd" id="1_j6mb4"]
+[ext_resource type="AudioStream" uid="uid://clueic74k1cgs" path="res://SFX/Click.wav" id="2_wb2q3"]
 
 [node name="PauseMenu" type="Control"]
 layout_mode = 3
@@ -62,6 +63,9 @@ offset_bottom = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wb2q3")
 
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
 [connection signal="value_changed" from="AbilityScroll" to="." method="_on_ability_scroll_value_changed"]

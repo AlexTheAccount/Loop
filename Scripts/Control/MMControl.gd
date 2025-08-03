@@ -11,6 +11,8 @@ var settingsNode
 var creditsNode
 var quitNode
 var addedMMD
+var clickPlayer
+var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,6 +23,8 @@ func _ready() -> void:
 	settingsNode = get_node("Settings")
 	creditsNode = get_node("Credits")
 	quitNode = get_node("Quit")
+	clickPlayer = get_node("ClickPlayer")
+	clickPlayer.volume_db = GlobalData.sfxVolume
 	
 	if GlobalData.loopNum > 0:
 		startNode.disabled = true
@@ -51,6 +55,10 @@ func ToggleAll():
 		add_child(addedMMD)
 
 func _on_start_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	GlobalData.loopNum = 1
 	GlobalData.SaveData()
 	ToggleAll()
@@ -60,6 +68,10 @@ func _on_start_button_up() -> void:
 	pass # Replace with function body.
 
 func _on_continue_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	GlobalData.loopNum += 1
 	GlobalData.isPlayerDead = false
 	GlobalData.SaveData()
@@ -71,6 +83,10 @@ func _on_continue_button_up() -> void:
 
 
 func _on_restart_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	GlobalData.ResetData()
 	GlobalData.loopNum = 1
 	GlobalData.SaveData()
@@ -82,10 +98,18 @@ func _on_restart_button_up() -> void:
 
 
 func _on_settings_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	pass # Replace with function body.
 
 
 func _on_credits_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	ToggleAll()
 	var addedCredits = creditsLoad.instantiate()
 	add_child(addedCredits)
@@ -94,5 +118,9 @@ func _on_credits_button_up() -> void:
 
 
 func _on_quit_button_up() -> void:
+	if clickPlayer.playing == false:
+		clickPlayer.pitch_scale = rng.randf_range(0.8, 1.2)
+		clickPlayer.play()
+		await clickPlayer.finished
 	get_tree().quit()
 	pass # Replace with function body.

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://ie4qsxeifyj5"]
+[gd_scene load_steps=3 format=3 uid="uid://ie4qsxeifyj5"]
 
 [ext_resource type="Script" uid="uid://b73pcogyra1qk" path="res://Scripts/Control/GameControlsControl.gd" id="1_hga5h"]
+[ext_resource type="AudioStream" uid="uid://clueic74k1cgs" path="res://SFX/Click.wav" id="2_3fpne"]
 
 [node name="GameControls" type="Control"]
 layout_mode = 3
@@ -40,5 +41,8 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back
 "
+
+[node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_3fpne")
 
 [connection signal="button_up" from="Back" to="." method="_on_back_button_up"]
