@@ -16,6 +16,8 @@ var playerShape
 var playerBlend
 var playerDashingBlend
 var playerArea
+var pelletPathMesh
+var pelletPathRay
 
 var jumpCount = 0
 var dashLeft = GlobalData.dashTime
@@ -31,6 +33,9 @@ func _ready():
 	playerBlend = get_node("CollisionShape3D/PlayerBlend")
 	playerDashingBlend = get_node("CollisionShape3D/PlayerDashingBlend")
 	playerArea = get_node("PlayerArea3D")
+	
+	pelletPathMesh = get_node("CollisionShape3D/PelletPathMesh")
+	pelletPathRay = get_node("CollisionShape3D/PelletPathRay")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,6 +45,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	FindPelletPath()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -117,6 +123,16 @@ func AlignPlayerWithMouse():
 		playerShape.rotation.x = 0
 		playerShape.rotation.z = 0
 
+func FindPelletPath():
+	if pelletPathRay.is_colliding():
+		var colPoint = pelletPathRay.get_collision_point()
+		var distance = pelletPathMesh.global_position.distance_to(colPoint)
+		pelletPathMesh.scale.z = distance
+		pelletPathMesh.position.z = -pelletPathMesh.scale.z
+	else:
+		pelletPathMesh.scale.z = 1
+		pelletPathMesh.position.z = -0.81
+	pass
 
 func _on_player_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemies"):
@@ -125,7 +141,6 @@ func _on_player_area_3d_body_entered(body: Node3D) -> void:
 		GlobalData.SaveData()
 		get_parent().get_parent().queue_free()
 	pass # Replace with function body.
-
 
 func _on_player_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Enemies"):
