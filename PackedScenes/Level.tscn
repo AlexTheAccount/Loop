@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ntp657mu5don" path="res://PackedScenes/Player/Player.tscn" id="2_weqj7"]
 [ext_resource type="PackedScene" uid="uid://tft0w0wxxl1l" path="res://PackedScenes/Book/BookTypes/DashBook.tscn" id="4_s1s6k"]
 [ext_resource type="PackedScene" uid="uid://iuy3hb81rvv7" path="res://PackedScenes/DeathFloor.tscn" id="5_cslcc"]
-[ext_resource type="PackedScene" uid="uid://c1210ia4d5lb5" path="res://PackedScenes/Enemies/EnemyBoss.tscn" id="5_ghqqu"]
+[ext_resource type="PackedScene" uid="uid://b7jxai2kovetp" path="res://PackedScenes/UI/Spawner.tscn" id="5_ghqqu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_fa1m1"]
 material = ExtResource("1_3sot4")
@@ -30,5 +30,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.94901, 1.05154, 3.19828)
 [node name="DashBook" parent="." instance=ExtResource("4_s1s6k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.0795, -0.189165, -3.31839)
 
-[node name="EnemyBoss" parent="." instance=ExtResource("5_ghqqu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.2804, 0.821723, -20.9702)
+[node name="Spawner" parent="." groups=["Enemies"] instance=ExtResource("5_ghqqu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96554, 0.164813, -0.876675)
+
+[node name="Node3D" type="Node3D" parent="Spawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.99213)
