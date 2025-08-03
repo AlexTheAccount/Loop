@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ntp657mu5don"]
+[gd_scene load_steps=12 format=3 uid="uid://ntp657mu5don"]
 
 [ext_resource type="Script" uid="uid://bylp4cxnnl3xt" path="res://Scripts/Body/PlayerBody.gd" id="1_m6ro6"]
 [ext_resource type="PackedScene" uid="uid://b0qw62wntixs5" path="res://PackedScenes/UI/PlayerUI.tscn" id="2_7mclc"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://cy524lpekf6g8" path="res://Blend/Player/PlayerDashing.blend" id="3_kngyk"]
 [ext_resource type="Material" uid="uid://qtb62t4rhvkt" path="res://Materials/WhiteTrans.tres" id="4_v6n4g"]
 [ext_resource type="PackedScene" uid="uid://ie4qsxeifyj5" path="res://PackedScenes/UI/Menus/GameControlsMenu.tscn" id="6_s6kpy"]
+[ext_resource type="AudioStream" uid="uid://yqtd5dkgo36h" path="res://SFX/Steps.wav" id="7_k2qfn"]
+[ext_resource type="AudioStream" uid="uid://b626klq0pqown" path="res://SFX/Jump.wav" id="8_i8m40"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0rwas"]
 
@@ -67,6 +69,13 @@ shape = SubResource("BoxShape3D_0rwas")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 0, 0, 0)
 light_energy = 0.2
+
+[node name="StepPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k2qfn")
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i8m40")
+volume_db = 1.0
 
 [connection signal="area_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_area_entered"]
 [connection signal="body_entered" from="CharacterBody3D/PlayerArea3D" to="CharacterBody3D" method="_on_player_area_3d_body_entered"]

@@ -18,10 +18,13 @@ var playerDashingBlend
 var playerArea
 var pelletPathMesh
 var pelletPathRay
+var stepPlayer
+var jumpPlayer
 
 var jumpCount = 0
 var dashLeft = GlobalData.dashTime
 var shiftPressed = false
+var rng = RandomNumberGenerator.new()
 
 func _ready():
 	mainMenuNode = get_tree().root.get_node("Main Menu")
@@ -36,6 +39,11 @@ func _ready():
 	
 	pelletPathMesh = get_node("CollisionShape3D/PelletPathMesh")
 	pelletPathRay = get_node("CollisionShape3D/PelletPathRay")
+	
+	stepPlayer = get_parent().get_node("StepPlayer")
+	jumpPlayer = get_parent().get_node("JumpPlayer")
+	stepPlayer.volume_db = GlobalData.sfxVolume
+	jumpPlayer.volume_db = GlobalData.sfxVolume
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -54,6 +62,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() || Input.is_action_just_pressed("ui_accept") && jumpCount < GlobalData.jumpLimit:
 		velocity.y = JUMP_VELOCITY
 		jumpCount += 1
+		jumpPlayer.pitch_scale = rng.randf_range(0.6, 1.2)
+		jumpPlayer.play()
 	if is_on_floor():
 		jumpCount = 0
 	
@@ -86,9 +96,13 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
+		if stepPlayer.playing == false && is_on_floor():
+			stepPlayer.pitch_scale = rng.randf_range(0.6, 1.2)
+			stepPlayer.play()
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+		stepPlayer.stop()
 
 	move_and_slide()
 
