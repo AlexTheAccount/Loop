@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbhj3h2yk0661"]
+[gd_scene load_steps=4 format=3 uid="uid://bbhj3h2yk0661"]
 
 [ext_resource type="Script" uid="uid://bxk7a77858odt" path="res://Scripts/Control/MMControl.gd" id="1_li6dc"]
 [ext_resource type="AudioStream" uid="uid://clueic74k1cgs" path="res://SFX/Click.wav" id="2_ml6h1"]
+[ext_resource type="AudioStream" uid="uid://u512iytagkiu" path="res://Music/LoopMain.wav" id="3_kjxhj"]
 
 [node name="Main Menu" type="Control"]
 layout_mode = 3
@@ -100,6 +101,9 @@ text = "Quit
 
 [node name="ClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ml6h1")
+
+[node name="MusicMainPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_kjxhj")
 
 [connection signal="button_up" from="Start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="Continue" to="." method="_on_continue_button_up"]

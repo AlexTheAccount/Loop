@@ -12,6 +12,7 @@ var creditsNode
 var quitNode
 var addedMMD
 var clickPlayer
+var musicMainPlayer
 var rng = RandomNumberGenerator.new()
 
 # Called when the node enters the scene tree for the first time.
@@ -24,7 +25,9 @@ func _ready() -> void:
 	creditsNode = get_node("Credits")
 	quitNode = get_node("Quit")
 	clickPlayer = get_node("ClickPlayer")
+	musicMainPlayer = get_node("MusicMainPlayer")
 	clickPlayer.volume_db = GlobalData.sfxVolume
+	musicMainPlayer.volume_db = GlobalData.musicVolume
 	
 	if GlobalData.loopNum > 0:
 		startNode.disabled = true
@@ -37,9 +40,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if addedMMD == null && musicMainPlayer.playing == false:
+		musicMainPlayer.play()
 	pass
 
 func ToggleAll():
+	clickPlayer.volume_db = GlobalData.sfxVolume
+	musicMainPlayer.volume_db = GlobalData.musicVolume
 	startNode.visible = not startNode.visible
 	continueNode.visible = not continueNode.visible
 	restartNode.visible = not restartNode.visible

@@ -26,10 +26,14 @@ Music made in LMMS
 3D models made in Blender
 
 SFX from Pixabay and edited in WavePad:
+freesounds123 - Magic Spell
+freesound_community - 028947_shell crunch, Harmonic Hum, Stone Steps, Cartoon Jump, Melancholy UI Chime
+CreatorsHome - Turn a Page
 
 Thanks For Playing!
 "
 editable = false
+wrap_mode = 1
 
 [node name="Back" type="Button" parent="."]
 layout_mode = 1

@@ -20,6 +20,9 @@ var pelletPathMesh
 var pelletPathRay
 var stepPlayer
 var jumpPlayer
+var musicWorldPlayer
+var musicBossPlayer
+var bossTime = false
 
 var jumpCount = 0
 var dashLeft = GlobalData.dashTime
@@ -44,12 +47,24 @@ func _ready():
 	jumpPlayer = get_parent().get_node("JumpPlayer")
 	stepPlayer.volume_db = GlobalData.sfxVolume
 	jumpPlayer.volume_db = GlobalData.sfxVolume
+	
+	musicWorldPlayer = get_parent().get_node("MusicWorldPlayer")
+	musicBossPlayer = get_parent().get_node("MusicBossPlayer")
+	musicWorldPlayer.volume_db = GlobalData.musicVolume
+	musicBossPlayer.volume_db = GlobalData.musicVolume
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		var pauseInsta = pauseLoad.instantiate() 
 		get_parent().get_parent().add_child(pauseInsta)
+	
+	# music
+	if musicWorldPlayer.playing == false && bossTime == false:
+		musicWorldPlayer.play()
+	elif musicBossPlayer.playing == false && bossTime == true:
+		musicWorldPlayer.stop()
+		musicBossPlayer.play()
 	pass
 
 func _physics_process(delta: float) -> void:
