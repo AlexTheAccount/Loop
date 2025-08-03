@@ -78,7 +78,7 @@ func _on_start_button_up() -> void:
 	GlobalData.SaveData()
 	ToggleAll()
 	addedMMD.queue_free()
-	var addedLevel = levelLoad.instantiate()
+	addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
 
@@ -107,7 +107,7 @@ func _on_restart_button_up() -> void:
 	GlobalData.SaveData()
 	ToggleAll()
 	addedMMD.queue_free()
-	var addedLevel = levelLoad.instantiate()
+	addedLevel = levelLoad.instantiate()
 	add_child(addedLevel)
 	pass # Replace with function body.
 
