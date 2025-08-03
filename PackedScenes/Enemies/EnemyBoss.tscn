@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://c1210ia4d5lb5"]
+
+[ext_resource type="Script" uid="uid://dawpd166n0lv8" path="res://Scripts/RotateMesh.gd" id="1_jfivv"]
+[ext_resource type="Script" uid="uid://ddgmhc5n7c50v" path="res://Scripts/Body/EnemyBody.gd" id="1_xcpv6"]
+[ext_resource type="PackedScene" uid="uid://bybhbrclglnlf" path="res://Blend/Freeze.blend" id="2_s2rcq"]
+[ext_resource type="PackedScene" uid="uid://dawujwcjwnlom" path="res://Blend/Enemies/EnemyBoss.blend" id="3_s2rcq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jfivv"]
+size = Vector3(0.521286, 5.78732, 0.596283)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2rcq"]
+size = Vector3(0.61969, 0.675537, 27.6857)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ms2ev"]
+size = Vector3(12.1451, 0.500977, 0.414124)
+
+[node name="EnemyBoss" type="Node3D"]
+script = ExtResource("1_jfivv")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["Enemies"]]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_xcpv6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0113606, 1.91704, 0.00488091)
+shape = SubResource("BoxShape3D_jfivv")
+
+[node name="Freeze" parent="CharacterBody3D" instance=ExtResource("2_s2rcq")]
+transform = Transform3D(1.805, 0, 0, 0, 1.805, 0, 0, 0, 1.805, 0, -0.587762, 0)
+visible = false
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0434265, 0.213013, 0.0650024)
+shape = SubResource("BoxShape3D_s2rcq")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0614777, 0.118652, 0.0391541)
+shape = SubResource("BoxShape3D_ms2ev")
+
+[node name="EnemyBoss" parent="." instance=ExtResource("3_s2rcq")]

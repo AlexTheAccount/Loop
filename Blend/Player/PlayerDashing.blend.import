@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cy524lpekf6g8"
-path="res://.godot/imported/PlayerDashing.blend-73be0cae9c820db81539ff18d80b62a2.scn"
+path="res://.godot/imported/PlayerDashing.blend-21d3de14054e5b22a92dc0f6780fb564.scn"
 
 [deps]
 
-source_file="res://Blend/PlayerDashing.blend"
-dest_files=["res://.godot/imported/PlayerDashing.blend-73be0cae9c820db81539ff18d80b62a2.scn"]
+source_file="res://Blend/Player/PlayerDashing.blend"
+dest_files=["res://.godot/imported/PlayerDashing.blend-21d3de14054e5b22a92dc0f6780fb564.scn"]
 
 [params]
 

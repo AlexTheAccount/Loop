@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mxsqwslmhrsb"]
 
-[ext_resource type="PackedScene" uid="uid://cj8m6n1e7td8" path="res://Blend/EnemyWall.blend" id="1_7k1dr"]
+[ext_resource type="PackedScene" uid="uid://cj8m6n1e7td8" path="res://Blend/Enemies/EnemyWall.blend" id="1_7k1dr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7k1dr"]
 size = Vector3(12.2027, 8.28357, 3.83533)

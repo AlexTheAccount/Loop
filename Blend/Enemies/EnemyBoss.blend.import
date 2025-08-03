@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://tqtowcrlg6ig"
-path="res://.godot/imported/EnemySpike.blend-0a3ced3c8680cea50aabd172d9a5b0b1.scn"
+uid="uid://dawujwcjwnlom"
+path="res://.godot/imported/EnemyBoss.blend-c878ada6e05f3f9a133da869062a303a.scn"
 
 [deps]
 
-source_file="res://Blend/EnemySpike.blend"
-dest_files=["res://.godot/imported/EnemySpike.blend-0a3ced3c8680cea50aabd172d9a5b0b1.scn"]
+source_file="res://Blend/Enemies/EnemyBoss.blend"
+dest_files=["res://.godot/imported/EnemyBoss.blend-c878ada6e05f3f9a133da869062a303a.scn"]
 
 [params]
 
