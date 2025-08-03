@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://cpno1fp1e12gx"]
+
+[node name="BossUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DashBar" type="LineEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 0.162
+offset_top = -0.800003
+offset_bottom = 0.0240021
+grow_horizontal = 2
+grow_vertical = 0
+text = "THE END?"
+alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="DashBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+color = Color(0, 0, 0, 1)
