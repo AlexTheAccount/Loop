@@ -34,7 +34,9 @@ func LoadData():
 
 func ResetData():
 	loopNum = 0
+	isPlayerDead = false
+	
 	jumpLimit = 0
 	dashTime = 0
-	isPlayerDead = false
+	freezeTime = 0
 	SaveData()

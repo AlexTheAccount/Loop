@@ -3517,3 +3517,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.893543, 7.62939e-06, -0.448
 
 [node name="BossSpawner" parent="Spawners" groups=["Bosses"] instance=ExtResource("9_n8aws")]
 transform = Transform3D(66.0391, 0, 0, 0, 1, 0, 0, 0, 71.7579, 0, 45.7322, -158.955)
+
+[node name="Node3D" type="Node3D" parent="Spawners/BossSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.93582, -0.429341)

@@ -35,7 +35,8 @@ func _on_body_entered(body: Node3D) -> void:
 		body.healthRect.size.x -= 24
 		body.healthRect.position.x += 12
 		if body.healthRect.size.x <= 0:
-			body.get_parent().queue_free()
+			body.healthBar.get_child(0).text = "AN ENDLESS LOOP!"
+			body.SPEED += 0.1
 		
 		if GlobalData.freezeTime > 0:
 			body.Freeze()

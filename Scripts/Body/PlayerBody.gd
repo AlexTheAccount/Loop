@@ -135,7 +135,7 @@ func FindPelletPath():
 	pass
 
 func _on_player_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Enemies"):
+	if body.is_in_group("Enemies") || body.is_in_group("Bosses"):
 		mainMenuNode.ToggleAll()
 		GlobalData.isPlayerDead = true
 		GlobalData.SaveData()
