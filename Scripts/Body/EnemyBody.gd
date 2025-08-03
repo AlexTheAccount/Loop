@@ -32,6 +32,7 @@ func _physics_process(delta):
 		look_at(player.global_position)
 		rotation.x = 0
 		rotation.z = 0
+		global_position.y = player.global_position.y
 		
 		var direction = (player.global_position - global_position)
 		velocity = direction * SPEED
